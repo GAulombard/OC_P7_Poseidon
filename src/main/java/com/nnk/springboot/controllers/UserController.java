@@ -14,11 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+/**
+ * The type User controller.
+ */
 @Controller
 public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/user/list")
     public String home(Model model)
     {
@@ -26,11 +35,25 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * Add user string.
+     *
+     * @param bid the bid
+     * @return the string
+     */
     @GetMapping("/user/add")
     public String addUser(User bid) {
         return "user/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param user   the user
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     */
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
         if (!result.hasErrors()) {
@@ -43,6 +66,13 @@ public class UserController {
         return "user/add";
     }
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
@@ -51,6 +81,15 @@ public class UserController {
         return "user/update";
     }
 
+    /**
+     * Update user string.
+     *
+     * @param id     the id
+     * @param user   the user
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     */
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) {
@@ -66,6 +105,13 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    /**
+     * Delete user string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, Model model) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));

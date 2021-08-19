@@ -11,10 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+/**
+ * The type Trade controller.
+ */
 @Controller
 public class TradeController {
     // TODO: Inject Trade service
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/trade/list")
     public String home(Model model)
     {
@@ -22,23 +31,53 @@ public class TradeController {
         return "trade/list";
     }
 
+    /**
+     * Add user string.
+     *
+     * @param bid the bid
+     * @return the string
+     */
     @GetMapping("/trade/add")
     public String addUser(Trade bid) {
         return "trade/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param trade  the trade
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     */
     @PostMapping("/trade/validate")
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Trade list
         return "trade/add";
     }
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Trade by Id and to model then show to the form
         return "trade/update";
     }
 
+    /**
+     * Update trade string.
+     *
+     * @param id     the id
+     * @param trade  the trade
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     */
     @PostMapping("/trade/update/{id}")
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
                              BindingResult result, Model model) {
@@ -46,6 +85,13 @@ public class TradeController {
         return "redirect:/trade/list";
     }
 
+    /**
+     * Delete trade string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/trade/delete/{id}")
     public String deleteTrade(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Trade by Id and delete the Trade, return to Trade list
