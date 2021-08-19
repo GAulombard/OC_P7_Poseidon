@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Poseidon" target="1.8" />
+      <module name="Poseidon" target="11" />
       <module name="spring-boot-skeleton" target="1.5" />
     </bytecodeTargetLevel>
   </component>
