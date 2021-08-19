@@ -8,9 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 
-/**
- * The type Rule name.
- */
 @Entity
 @Getter
 @Setter
@@ -30,6 +27,9 @@ public class RuleName {
     private String description;
 
     @Column(name = "json")
+    private String json;
+
+    @Column(name = "template")
     private String template;
 
     @Column(name = "sql_str")
@@ -37,4 +37,17 @@ public class RuleName {
 
     @Column(name = "sql_part")
     private String sqlPart;
+
+    public RuleName(String name, String description, String json, String template, String sqlStr, String sqlPart) {
+        this.name = name;
+        this.description = description;
+        this.json = json;
+        this.template = template;
+        this.sqlStr = sqlStr;
+        this.sqlPart = sqlPart;
+    }
+
+    public RuleName() {
+
+    }
 }

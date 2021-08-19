@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * The type Login controller.
- */
 @Controller
 @RequestMapping("app")
 public class LoginController {
@@ -17,11 +14,6 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
-    /**
-     * Login model and view.
-     *
-     * @return the model and view
-     */
     @GetMapping("login")
     public ModelAndView login() {
         ModelAndView mav = new ModelAndView();
@@ -29,11 +21,6 @@ public class LoginController {
         return mav;
     }
 
-    /**
-     * Gets all user articles.
-     *
-     * @return the all user articles
-     */
     @GetMapping("secure/article-details")
     public ModelAndView getAllUserArticles() {
         ModelAndView mav = new ModelAndView();
@@ -42,11 +29,6 @@ public class LoginController {
         return mav;
     }
 
-    /**
-     * Error model and view.
-     *
-     * @return the model and view
-     */
     @GetMapping("error")
     public ModelAndView error() {
         ModelAndView mav = new ModelAndView();

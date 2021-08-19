@@ -10,26 +10,12 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
-/**
- * The type Trade.
- */
 @Entity
 @Getter
 @Setter
 @ToString
 @Table(name = "trade")
 public class Trade {
-
-    public Trade() {
-
-    }
-
-    public Trade(String account, String type) {
-
-        this.account = account;
-        this.type = type;
-
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -96,6 +82,15 @@ public class Trade {
     @Column(name = "side")
     private String side;
 
+    public Trade() {
 
+    }
+
+    public Trade(String account, String type) {
+
+        this.account = account;
+        this.type = type;
+
+    }
 
 }

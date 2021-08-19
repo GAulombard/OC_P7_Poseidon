@@ -1,6 +1,12 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
+import com.nnk.springboot.domain.User;
+import com.nnk.springboot.services.BidListService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,75 +16,43 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
-/**
- * The type Bid list controller.
- */
 @Controller
 public class BidListController {
-    // TODO: Inject Bid service
+    private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);
 
-    /**
-     * Home string.
-     *
-     * @param model the model
-     * @return the string
-     */
+    @Autowired
+    private BidListService bidListService;
+
     @RequestMapping("/bidList/list")
-    public String home(Model model)
+    public String home(@AuthenticationPrincipal User user, Model model)
     {
-        // TODO: call service find all bids to show to the view
+        LOGGER.info("HTTP GET request received at /bidList/list");
+
+        model.addAttribute("bidList",bidListService.findAll());
+
         return "bidList/list";
     }
 
-    /**
-     * Add bid form string.
-     *
-     * @param bid the bid
-     * @return the string
-     */
     @GetMapping("/bidList/add")
     public String addBidForm(BidList bid) {
         return "bidList/add";
     }
 
-    /**
-     * Validate string.
-     *
-     * @param bid    the bid
-     * @param result the result
-     * @param model  the model
-     * @return the string
-     */
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return bid list
         return "bidList/add";
     }
 
-    /**
-     * Show update form string.
-     *
-     * @param id    the id
-     * @param model the model
-     * @return the string
-     */
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // TODO: get Bid by Id and to model then show to the form
         return "bidList/update";
     }
 
-    /**
-     * Update bid string.
-     *
-     * @param id      the id
-     * @param bidList the bid list
-     * @param result  the result
-     * @param model   the model
-     * @return the string
-     */
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
@@ -86,13 +60,6 @@ public class BidListController {
         return "redirect:/bidList/list";
     }
 
-    /**
-     * Delete bid string.
-     *
-     * @param id    the id
-     * @param model the model
-     * @return the string
-     */
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
         // TODO: Find Bid by Id and delete the bid, return to Bid list
