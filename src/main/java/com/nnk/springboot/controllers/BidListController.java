@@ -10,10 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,14 +34,26 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/add")
-    public String addBidForm(BidList bid) {
+    public String addBidForm(Model model) {
+        LOGGER.info("HTTP GET request received at /bidList/add");
+
+        model.addAttribute("bidList", new BidList());
+
         return "bidList/add";
     }
 
     @PostMapping("/bidList/validate")
-    public String validate(@Valid BidList bid, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return bid list
-        return "bidList/add";
+    public String validate(@Valid @ModelAttribute("bidList") BidList bid, BindingResult bindingResult, Model model) {
+        LOGGER.info("HTTP POST request received at /bidList/validate");
+
+        if(bindingResult.hasErrors()) {
+            LOGGER.info("invalid field(s)");
+            return "bidList/add";
+        }
+
+        bidListService.save(bid);
+
+        return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/update/{id}")

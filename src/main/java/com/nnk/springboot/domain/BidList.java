@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Required;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -25,21 +27,27 @@ public class BidList {
     private Integer bidListId;
 
     @Column(name = "account")
+    @NotEmpty(message = "Account is mandatory")
     private String account;
 
     @Column(name = "type")
+    @NotEmpty(message = "Type is mandatory")
     private String type;
 
     @Column(name = "bid_quantity")
+    @NotNull(message = "Bid quantity is mandatory")
     private double bidQuantity;
 
     @Column(name = "ask_quantity")
+    @NotNull(message = "Ask quantity is mandatory")
     private double askQuantity;
 
     @Column(name = "bid")
+    @NotNull(message = "Bid is mandatory")
     private double bid;
 
     @Column(name = "ask")
+    @NotNull(message = "Ask is mandatory")
     private double ask;
 
     @Column(name = "benchmark")

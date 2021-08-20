@@ -15,9 +15,40 @@
 
 	<div class="row">
 		<form action="#" th:action="@{/bidList/validate}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to input the values of Bid, there are 2 buttons: Save data and Cancel to the list Bid
-			 -->
+				<div class="form-row">
+					<div class="col-md-4 mb-3">
+						<label for="account">Account</label>
+						<input th:field="*{account}" type="text" class="form-control" id="account" name="account" placeholder="account">
+						<span class="text-danger" th:errors="*{account}"></span>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="type">Type</label>
+						<input th:field="*{type}" type="text" class="form-control" id="type" name="type" placeholder="type">
+						<span class="text-danger" th:errors="*{type}"></span>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="bidQuantity">Bid quantity</label>
+						<input th:field="*{bidQuantity}" type="text" class="form-control" id="bidQuantity" name="bidQuantity" placeholder="bid quantity">
+						<span class="text-danger" th:errors="*{bidQuantity}"></span>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="askQuantity">Ask quantity</label>
+						<input th:field="*{askQuantity}" type="text" class="form-control" id="askQuantity" name="askQuantity" placeholder="ask quantity">
+						<span class="text-danger" th:errors="*{askQuantity}"></span>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="bid">Bid</label>
+						<input th:field="*{bid}" type="text" class="form-control" id="bid" name="bid" placeholder="Bid">
+						<span class="text-danger" th:errors="*{bid}"></span>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="ask">Ask</label>
+						<input th:field="*{ask}" type="text" class="form-control" id="ask" name="ask" placeholder="Ask">
+						<span class="text-danger" th:errors="*{ask}"></span>
+					</div>
+				</div>
+				<button class="btn btn-primary" type="submit">Save data</button>
+				<a class="btn btn-primary" th:href="@{/bidList/list}">Cancel</a>
 		</form>
 	</div>
 

@@ -20,7 +20,14 @@ public class BidListService {
 
     public List<BidList> findAll(){
         LOGGER.info("Process to find all bids");
+
         return bidListRepository.findAll();
+    }
+
+    public void save(BidList bid) {
+        LOGGER.info("Process to save a bid");
+
+        bidListRepository.save(bid);
     }
 
 }
