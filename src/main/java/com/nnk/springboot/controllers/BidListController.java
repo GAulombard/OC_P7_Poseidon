@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.User;
+import com.nnk.springboot.exception.BidNotFoundException;
 import com.nnk.springboot.services.BidListService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +44,7 @@ public class BidListController {
     }
 
     @PostMapping("/bidList/validate")
-    public String validate(@Valid @ModelAttribute("bidList") BidList bid, BindingResult bindingResult, Model model) {
+    public String validate(@Valid @ModelAttribute("bidList") BidList bid, BindingResult bindingResult) {
         LOGGER.info("HTTP POST request received at /bidList/validate");
 
         if(bindingResult.hasErrors()) {
@@ -57,21 +58,43 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Bid by Id and to model then show to the form
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws BidNotFoundException {
+        LOGGER.info("HTTP GET request received at /bidList/update/{id}");
+
+        model.addAttribute("bidList",bidListService.findBidById(id));
+
         return "bidList/update";
     }
 
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
-                             BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
+                             BindingResult bindingResult, Model model) throws BidNotFoundException {
+        LOGGER.info("HTTP POST request received at /bidList/update/{id}");
+
+       if(bindingResult.hasErrors()){
+           return "redirect:/bidList/list";
+       }
+
+       BidList bidToUpdate = bidListService.findBidById(id);
+
+       bidToUpdate.setAccount(bidList.getAccount());
+       bidToUpdate.setType(bidList.getType());
+       bidToUpdate.setBidQuantity(bidList.getBidQuantity());
+       bidToUpdate.setAskQuantity(bidList.getAskQuantity());
+       bidToUpdate.setBid(bidList.getBid());
+       bidToUpdate.setAsk(bidList.getAsk());
+       bidListService.save(bidToUpdate);
+
+
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Bid by Id and delete the bid, return to Bid list
+    public String deleteBid(@PathVariable("id") Integer id) {
+        LOGGER.info("HTTP GET request received at /bidList/delete/{id}");
+
+        bidListService.deleteBidById(id);
+
         return "redirect:/bidList/list";
     }
 }
