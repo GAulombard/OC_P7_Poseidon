@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.domain.User;
-import com.nnk.springboot.exception.BidNotFoundException;
+import com.nnk.springboot.exception.NotFoundException;
 import com.nnk.springboot.services.BidListService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @Controller
@@ -58,7 +57,7 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws BidNotFoundException {
+    public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /bidList/update/{id}");
 
         model.addAttribute("bidList",bidListService.findBidById(id));
@@ -68,7 +67,7 @@ public class BidListController {
 
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
-                             BindingResult bindingResult, Model model) throws BidNotFoundException {
+                             BindingResult bindingResult, Model model) throws NotFoundException {
         LOGGER.info("HTTP POST request received at /bidList/update/{id}");
 
        if(bindingResult.hasErrors()){

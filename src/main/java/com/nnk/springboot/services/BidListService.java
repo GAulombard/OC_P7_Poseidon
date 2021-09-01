@@ -1,9 +1,8 @@
 package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.exception.BidNotFoundException;
+import com.nnk.springboot.exception.NotFoundException;
 import com.nnk.springboot.repositories.BidListRepository;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +30,10 @@ public class BidListService {
         bidListRepository.save(bid);
     }
 
-    public BidList findBidById(Integer id) throws BidNotFoundException {
+    public BidList findBidById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find a bid by Id");
 
-        if(!bidListRepository.existsById(id)) throw new BidNotFoundException("Bid not found");
+        if(!bidListRepository.existsById(id)) throw new NotFoundException("Bid not found");
 
         BidList bid = bidListRepository.getOne(id);
         return bid;

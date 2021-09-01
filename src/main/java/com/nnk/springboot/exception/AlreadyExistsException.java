@@ -3,10 +3,9 @@ package com.nnk.springboot.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class BidNotFoundException extends Exception{
-
-    public BidNotFoundException(String s) {
+@ResponseStatus(value = HttpStatus.CONFLICT)
+public class AlreadyExistsException extends Throwable {
+    public AlreadyExistsException(String s) {
         super(s);
     }
 }

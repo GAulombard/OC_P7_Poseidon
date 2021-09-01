@@ -1,7 +1,7 @@
 package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.exception.BidNotFoundException;
+import com.nnk.springboot.exception.NotFoundException;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
@@ -51,7 +50,7 @@ public class BidListServiceTest {
     }
 
     @Test
-    void test_findBidById() throws BidNotFoundException {
+    void test_findBidById() throws NotFoundException {
         BidList bidList = new BidList("Test account", "Test type", 10.00d);
         when(bidListRepository.existsById(anyInt())).thenReturn(true);
         when(bidListRepository.getOne(1)).thenReturn(bidList);
@@ -60,10 +59,10 @@ public class BidListServiceTest {
     }
 
     @Test
-    void test_findBidById_shouldThrowBidNotFoundException() throws BidNotFoundException {
+    void test_findBidById_shouldThrowNotFoundException() throws NotFoundException {
         BidList bidList = new BidList("Test account", "Test type", 10.00d);
         when(bidListRepository.existsById(anyInt())).thenReturn(false);
-        assertThrows(BidNotFoundException.class,() -> bidListService.findBidById(anyInt()));
+        assertThrows(NotFoundException.class,() -> bidListService.findBidById(anyInt()));
     }
 
     @Test
