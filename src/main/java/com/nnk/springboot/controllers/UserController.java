@@ -18,6 +18,7 @@ import javax.validation.Valid;
 @PreAuthorize("hasAnyRole('ADMIN')")
 @Controller
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 

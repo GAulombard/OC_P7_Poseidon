@@ -5,7 +5,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -22,12 +25,16 @@ public class Trade {
     @Column(name = "trade_id", nullable = false)
     private Integer tradeId;
 
+    @NotEmpty(message = "Account is mandatory")
     @Column(name = "account")
     private String account;
 
+    @NotEmpty(message = "Account is mandatory")
     @Column(name = "type")
     private String type;
 
+    @NotNull(message = "Buy quantity is mandatory")
+    @Min(value=0,message = "Buy quantity must be a positive number")
     @Column(name = "buy_quantity")
     private double buyQuantity;
 
@@ -86,8 +93,9 @@ public class Trade {
 
     }
 
-    public Trade(String account, String type) {
+    public Trade(String account, String type, double buyQuantity) {
 
+        this.buyQuantity = buyQuantity;
         this.account = account;
         this.type = type;
 

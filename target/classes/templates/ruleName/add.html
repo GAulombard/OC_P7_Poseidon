@@ -15,10 +15,41 @@
 
 	<div class="row">
 		<form action="#" th:action="@{/ruleName/validate}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
-			<!--
-			TODO: Create a form to input the values of RuleName, there are 2 buttons: Save data and Cancel to the list RuleName
-			 -->
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="name">name</label>
+					<input th:field="*{name}" type="text" class="form-control" id="name" name="name" placeholder="name">
+					<span class="text-danger" th:errors="*{name}"></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="description">description</label>
+					<input th:field="*{description}" type="text" class="form-control" id="description" name="description" placeholder="description">
+					<span class="text-danger" th:errors="*{description}"></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="json">json</label>
+					<input th:field="*{json}" type="text" class="form-control" id="json" name="json" placeholder="json">
+					<span class="text-danger" th:errors="*{json}"></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="template">template</label>
+					<input th:field="*{template}" type="text" class="form-control" id="template" name="template" placeholder="template">
+					<span class="text-danger" th:errors="*{template}"></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="sqlStr">sqlStr</label>
+					<input th:field="*{sqlStr}" type="text" class="form-control" id="sqlStr" name="sqlStr" placeholder="sqlStr">
+					<span class="text-danger" th:errors="*{sqlStr}"></span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="sqlPart">sqlPart</label>
+					<input th:field="*{sqlPart}" type="text" class="form-control" id="sqlPart" name="sqlPart" placeholder="sqlPart">
+					<span class="text-danger" th:errors="*{sqlPart}"></span>
+				</div>
 
+			</div>
+			<button class="btn btn-primary" type="submit">Save data</button>
+			<a class="btn btn-primary" th:href="@{/ruleName/list}">Cancel</a>
 		</form>
 	</div>
 
