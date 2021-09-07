@@ -6,10 +6,7 @@ import lombok.ToString;
 import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -35,18 +32,26 @@ public class BidList {
     private String type;
 
     @Column(name = "bid_quantity")
+    @Min(value = 0, message = "bidQuantity must be positive")
+    @Digits(integer = 8, fraction = 2, message = "bidQuantitys should be a number")
     @NotNull(message = "Bid quantity is mandatory")
     private double bidQuantity;
 
     @Column(name = "ask_quantity")
+    @Min(value = 0, message = "askQuantity must be positive")
+    @Digits(integer = 8, fraction = 2, message = "askQuantity should be a number")
     @NotNull(message = "Ask quantity is mandatory")
     private double askQuantity;
 
     @Column(name = "bid")
+    @Min(value = 0, message = "bid must be positive")
+    @Digits(integer = 8, fraction = 2, message = "bid should be a number")
     @NotNull(message = "Bid is mandatory")
     private double bid;
 
     @Column(name = "ask")
+    @Min(value = 0, message = "ask must be positive")
+    @Digits(integer = 8, fraction = 2, message = "ask should be a number")
     @NotNull(message = "Ask is mandatory")
     private double ask;
 

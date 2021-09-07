@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -8,7 +9,28 @@
 </head>
 <body>
 <div class="container">
+	<div class="row">
+		<div class="col-6">
+			<a href="/bidList/list">Bid List</a>&nbsp;|&nbsp;
+			<a href="/curvePoint/list">Curve Points</a>&nbsp;|&nbsp;
+			<a href="/rating/list">Ratings</a>&nbsp;|&nbsp;
+			<a href="/trade/list">Trade</a>&nbsp;|&nbsp;
+			<a href="/ruleName/list">Rule</a> |
+			<a href="/user/list" sec:authorize="hasRole('ADMIN')">User</a>
+		</div>
+		<div class="col-6 text-right">
+			<div>Logged in user: <b th:inline="text"  class="user"> [[${#httpServletRequest.remoteUser}]] </b></div>
+			<div><a th:href="@{/logout}" class="btn btn-secondary">Logout</a></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
 
+		</div>
+		<div class="col-6 text-right">
+			<a href="/">Home</a>&nbsp;|&nbsp;<a href="/login">Login</a>
+		</div>
+	</div>
 	<div class="row">
 		<h2>Add New Curve Point</h2>
 	</div>

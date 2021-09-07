@@ -6,10 +6,7 @@ import lombok.ToString;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -38,6 +35,7 @@ public class Rating {
 
     @NotNull(message = "Order number is mandatory")
     @Min(value = 0,message = "Order number must be a positive number")
+    @Digits(integer = 8, fraction = 0, message = "orderNumber should be a integer number")
     @Column(name = "order_number")
     private Integer orderNumber;
 

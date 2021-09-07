@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,6 +31,8 @@ public class User implements UserDetails {
     private String username;
 
     @Column(name = "password")
+    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+            message = "Password must contain at least 1 uppercase char, 8 characters, 1 digit, and 1 symbol")
     @NotBlank(message = "Password is mandatory")
     private String password;
 

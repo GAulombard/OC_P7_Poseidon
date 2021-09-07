@@ -5,10 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -35,6 +32,7 @@ public class Trade {
 
     @NotNull(message = "Buy quantity is mandatory")
     @Min(value=0,message = "Buy quantity must be a positive number")
+    @Digits(integer = 8, fraction = 2, message = "buyQuantity should be a number")
     @Column(name = "buy_quantity")
     private double buyQuantity;
 
