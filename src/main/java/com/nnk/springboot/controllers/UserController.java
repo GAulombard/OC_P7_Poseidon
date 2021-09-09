@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +28,15 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/user/list")
-    public String home(Model model)
+    public String home(Model model, @AuthenticationPrincipal User user)
     {
         LOGGER.info("HTTP request received at /user/list");
+
+        if (!user.getRole().equals("ROLE_ADMIN")) {
+            String errorMsg = "You must be admin to access this page";
+            model.addAttribute("errorMsg",errorMsg);
+            return "error/403";
+        }
 
         model.addAttribute("users", userService.findAll());
 

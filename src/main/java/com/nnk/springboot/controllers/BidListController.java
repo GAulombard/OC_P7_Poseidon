@@ -35,7 +35,7 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/add")
-    public String addBidForm(Model model) {
+    public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /bidList/add");
 
         model.addAttribute("bidList", new BidList());
@@ -67,12 +67,12 @@ public class BidListController {
     }
 
     @PostMapping("/bidList/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
+    public String update(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult bindingResult, Model model) throws NotFoundException {
         LOGGER.info("HTTP POST request received at /bidList/update/{id}");
 
        if(bindingResult.hasErrors()){
-           return "redirect:/bidList/list";
+           return "bidList/list";
        }
 
        BidList bidToUpdate = bidListService.findBidById(id);
@@ -90,7 +90,7 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id) {
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /bidList/delete/{id}");
 
         bidListService.deleteBidById(id);

@@ -41,7 +41,7 @@ public class RuleNameController {
     }
 
     @GetMapping("/ruleName/add")
-    public String addRuleForm(Model model) {
+    public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /ruleName/add");
 
         model.addAttribute("ruleName", new RuleName());
@@ -75,7 +75,7 @@ public class RuleNameController {
 
 
     @PostMapping("/ruleName/update/{id}")
-    public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
+    public String update(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                                  BindingResult result, Model model) {
         LOGGER.info("HTTP POST request received at /ruleName/update/{id}");
 
@@ -90,7 +90,7 @@ public class RuleNameController {
 
 
     @GetMapping("/ruleName/delete/{id}")
-    public String deleteRuleName(@PathVariable("id") Integer id) throws NotFoundException {
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /ruleName/delete/{id}");
 
         ruleNameService.deleteById(id);

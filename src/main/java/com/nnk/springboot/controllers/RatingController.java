@@ -37,7 +37,7 @@ public class RatingController {
 
 
     @GetMapping("/rating/add")
-    public String addRatingForm(Model model) {
+    public String addForm(Model model) {
 
         LOGGER.info("HTTP GET request received at /rating/add");
 
@@ -73,7 +73,7 @@ public class RatingController {
 
 
     @PostMapping("/rating/update/{id}")
-    public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
+    public String update(@PathVariable("id") Integer id, @Valid Rating rating,
                                BindingResult result, Model model) {
         LOGGER.info("HTTP POST request received at /rating/update/{id}");
 
@@ -88,7 +88,7 @@ public class RatingController {
 
 
     @GetMapping("/rating/delete/{id}")
-    public String deleteRating(@PathVariable("id") Integer id) throws NotFoundException {
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /rating/delete/{id}");
 
         ratingService.deleteById(id);

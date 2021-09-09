@@ -37,7 +37,7 @@ public class TradeController {
     }
 
     @GetMapping("/trade/add")
-    public String addUser(Model model) {
+    public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /trade/add");
 
         model.addAttribute("trade", new Trade());
@@ -69,7 +69,7 @@ public class TradeController {
     }
 
     @PostMapping("/trade/update/{id}")
-    public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
+    public String update(@PathVariable("id") Integer id, @Valid Trade trade,
                               BindingResult result) {
         LOGGER.info("HTTP POST request received at /trade/update/{id}");
 
@@ -83,7 +83,7 @@ public class TradeController {
     }
 
     @GetMapping("/trade/delete/{id}")
-    public String deleteTrade(@PathVariable("id") Integer id) throws NotFoundException {
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP request received at /trade/delete/{id}");
 
         tradeService.deleteById(id);

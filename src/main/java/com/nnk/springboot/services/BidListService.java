@@ -40,8 +40,10 @@ public class BidListService {
 
     }
 
-    public void deleteBidById(Integer id) {
+    public void deleteBidById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete a bid by Id");
+
+        if(!bidListRepository.existsById(id)) throw new NotFoundException("Bid not found");
 
         bidListRepository.deleteById(id);
     }

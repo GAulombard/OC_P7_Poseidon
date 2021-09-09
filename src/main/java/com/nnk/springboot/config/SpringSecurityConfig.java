@@ -24,7 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests(authorize -> {
-                    authorize.antMatchers("/")
+                    authorize.antMatchers("/","/error/403")
                             .permitAll();
                 })
                 .authorizeRequests()
@@ -41,10 +41,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .exceptionHandling()
-                .accessDeniedPage("/403")
+                .accessDeniedPage("/error/403")
                 .and()
                 .logout()
-                //.logoutUrl("/logout")
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
         ;
 

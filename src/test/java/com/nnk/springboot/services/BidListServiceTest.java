@@ -66,7 +66,7 @@ public class BidListServiceTest {
     }
 
     @Test
-    void test_deleteBidById(){
+    void test_deleteBidById() throws NotFoundException {
         doNothing().when(bidListRepository).deleteById(1);
         bidListService.deleteBidById(1);
         verify(bidListRepository).deleteById(1);

@@ -218,5 +218,6 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:8.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:8.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.report:0.8.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.springframework.security:spring-security-test:5.5.1" level="project" />
   </component>
 </module>

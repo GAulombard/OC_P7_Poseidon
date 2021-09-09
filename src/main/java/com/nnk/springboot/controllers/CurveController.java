@@ -42,7 +42,7 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/add")
-    public String addCurvePointForm(Model model) {
+    public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /curvePoint/add");
 
         model.addAttribute("curvePoint", new CurvePoint());
@@ -78,7 +78,7 @@ public class CurveController {
 
 
     @PostMapping("/curvePoint/update/{id}")
-    public String updateBid(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
+    public String update(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) throws AlreadyExistsException {
         LOGGER.info("HTTP POST request received at /curvePoint/update/{id}");
 
@@ -93,7 +93,7 @@ public class CurveController {
 
 
     @GetMapping("/curvePoint/delete/{id}")
-    public String deleteBid(@PathVariable("id") Integer id) throws NotFoundException {
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /curvePoint/delete/{id}");
         curvePointService.deleteById(id);
         return "redirect:/curvePoint/list";
