@@ -44,3 +44,26 @@ Using generated security password: 8a1c784c-b52c-4c46-ac05-fa1f6c5da110
 2021-09-10 10:27:08.876  INFO 9372 --- [main] c.n.s.controllers.RuleNameController     : HTTP POST request received at /ruleName/validate
 2021-09-10 10:27:08.888  INFO 9372 --- [main] c.n.s.controllers.RuleNameController     : HTTP GET request received at /ruleName/add
 2021-09-10 10:27:08.923  INFO 9372 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-09-10 10:33:25.700  INFO 6780 --- [main] c.n.s.controllers.TradeControllerTest    : Starting TradeControllerTest using Java 11.0.11 on DESKTOP-2K67CMT with PID 6780 (started by Hodor-Fixe in D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon)
+2021-09-10 10:33:25.704  INFO 6780 --- [main] c.n.s.controllers.TradeControllerTest    : No active profile set, falling back to default profiles: default
+2021-09-10 10:33:27.687  INFO 6780 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@267f9765' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-09-10 10:33:27.699  INFO 6780 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-09-10 10:33:28.080  INFO 6780 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 1146dd8c-d20a-48fa-8a62-63e4e1e8aae3
+
+2021-09-10 10:33:28.322  INFO 6780 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71b97eeb, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f0f70c7, org.springframework.security.web.header.HeaderWriterFilter@2b79c8ff, org.springframework.security.web.authentication.logout.LogoutFilter@2aa5bd48, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@b506ed0, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@718989fa, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2776fd8f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2450256f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c97721b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74e497ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c62c3fd, org.springframework.security.web.session.SessionManagementFilter@5d14e99e, org.springframework.security.web.access.ExceptionTranslationFilter@5b0902b4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25f0c5e7]
+2021-09-10 10:33:28.640  INFO 6780 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-09-10 10:33:29.045  INFO 6780 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-09-10 10:33:29.045  INFO 6780 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-09-10 10:33:29.047  INFO 6780 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2021-09-10 10:33:29.078  INFO 6780 --- [main] c.n.s.controllers.TradeControllerTest    : Started TradeControllerTest in 3.927 seconds (JVM running for 5.76)
+2021-09-10 10:33:29.227  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP request received at /trade/list
+2021-09-10 10:33:29.907  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP POST request received at /trade/validate
+2021-09-10 10:33:30.048  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP GET request received at /trade/update/{id}
+2021-09-10 10:33:30.074  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP request received at /trade/delete/{id}
+2021-09-10 10:33:30.094  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP POST request received at /trade/update/{id}
+2021-09-10 10:33:30.143  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP POST request received at /trade/update/{id}
+2021-09-10 10:33:30.181  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP POST request received at /trade/validate
+2021-09-10 10:33:30.199  INFO 6780 --- [main] c.n.s.controllers.TradeController        : HTTP GET request received at /trade/add
+2021-09-10 10:33:30.243  INFO 6780 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
