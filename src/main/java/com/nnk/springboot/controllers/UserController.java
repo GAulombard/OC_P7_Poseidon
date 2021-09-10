@@ -32,11 +32,11 @@ public class UserController {
     {
         LOGGER.info("HTTP request received at /user/list");
 
-        if (!user.getRole().equals("ROLE_ADMIN")) {
+/*        if (!user.getRole().equals("ROLE_ADMIN")) {
             String errorMsg = "You must be admin to access this page";
             model.addAttribute("errorMsg",errorMsg);
             return "error/403";
-        }
+        }*/
 
         model.addAttribute("users", userService.findAll());
 
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping("/user/add")
-    public String addUser(Model model) {
+    public String addForm(Model model) {
         LOGGER.info("HTTP Get request received at /user/add");
 
         model.addAttribute("user",new User());
@@ -77,7 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/user/update/{id}")
-    public String updateUser(@PathVariable("id") Integer id, @Valid User user,
+    public String update(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) throws NotFoundException {
         LOGGER.info("HTTP POST request received at /user/update/{id}");
 
@@ -92,7 +92,7 @@ public class UserController {
     }
 
     @GetMapping("/user/delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id, Model model) throws NotFoundException {
+    public String delete(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /user/delete/{id}");
 
         userService.deleteById(id);
