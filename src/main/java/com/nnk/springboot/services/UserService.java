@@ -62,6 +62,7 @@ public class UserService {
         if(!userRepository.existsById(id)) {
             throw new NotFoundException("User not found");
         }
+
         return userRepository.getOne(id);
     }
 

@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @PreAuthorize("hasAnyRole('ADMIN')")
 @Controller
@@ -28,15 +29,9 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/user/list")
-    public String home(Model model, @AuthenticationPrincipal User user)
+    public String home(Model model, Principal user)
     {
         LOGGER.info("HTTP request received at /user/list");
-
-/*        if (!user.getRole().equals("ROLE_ADMIN")) {
-            String errorMsg = "You must be admin to access this page";
-            model.addAttribute("errorMsg",errorMsg);
-            return "error/403";
-        }*/
 
         model.addAttribute("users", userService.findAll());
 
