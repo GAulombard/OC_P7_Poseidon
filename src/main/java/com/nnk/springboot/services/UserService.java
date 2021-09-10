@@ -34,7 +34,10 @@ public class UserService {
         LOGGER.info("Process to save new user");
 
         if(userRepository.existsByUsername(user.getUsername())) {
-            throw new AlreadyExistsException("User already exists");
+            throw new AlreadyExistsException("Username already exists");
+        }
+        if(userRepository.existsByFullName(user.getFullName())) {
+            throw new AlreadyExistsException("FullName already exists");
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -47,7 +50,7 @@ public class UserService {
         LOGGER.info("Process to save new user");
 
         if(!userRepository.existsByUsername(user.getUsername())) {
-            throw new NotFoundException("User already exists");
+            throw new NotFoundException("User not found");
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
