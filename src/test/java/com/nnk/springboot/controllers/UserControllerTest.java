@@ -1,7 +1,9 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.annotation.UniqueValidator;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.domain.User;
+import com.nnk.springboot.repositories.UserRepository;
 import com.nnk.springboot.services.TradeService;
 import com.nnk.springboot.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -28,6 +30,9 @@ public class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private UserRepository userRepository;
 
     @MockBean
     private UserService userService;
@@ -109,6 +114,9 @@ public class UserControllerTest {
     @WithMockUser(roles="ADMIN")
     void test_validate() throws Exception {
         User user = new User("test","test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
+        //when(uniqueValidator.isValid(anyString(),any())).thenReturn(true);
         mockMvc.perform(post("/user/validate").flashAttr("user",user))
                 .andExpect(status().isOk());
     }
@@ -117,6 +125,8 @@ public class UserControllerTest {
     @WithMockUser(roles="ADMIN")
     void test_validate_withInvalidField() throws Exception {
         User user = new User(null,"test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
         mockMvc.perform(post("/user/validate").flashAttr("user",user))
                 .andExpect(status().isOk())
                 .andExpect(model().hasErrors());
@@ -136,6 +146,8 @@ public class UserControllerTest {
     @WithMockUser(roles="ADMIN")
     void test_update() throws Exception {
         User user = new User("test","test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
         when(userService.findById(anyInt())).thenReturn(user);
         mockMvc.perform(post("/user/update/1").flashAttr("trade",user))
                 .andExpect(status().isOk());
@@ -145,6 +157,8 @@ public class UserControllerTest {
     @WithMockUser(roles="ADMIN")
     void test_update_withInvalidField() throws Exception {
         User user = new User(null,"test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
         when(userService.findById(anyInt())).thenReturn(user);
         mockMvc.perform(post("/user/update/1").flashAttr("user",user))
                 .andExpect(status().isOk())
@@ -177,6 +191,8 @@ public class UserControllerTest {
     @WithMockUser(roles="USER")
     void test_validate_expectForbiddenAccess() throws Exception {
         User user = new User("test","test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
         mockMvc.perform(post("/user/validate").flashAttr("user",user))
                 .andExpect(status().isForbidden());
     }
@@ -194,6 +210,8 @@ public class UserControllerTest {
     @WithMockUser(roles="USER")
     void test_update_expectForbiddenAccess() throws Exception {
         User user = new User("test","test","ROLE_USER");
+        when(userRepository.existsByUsername(anyString())).thenReturn(false);
+        when(userRepository.existsByFullName(anyString())).thenReturn(false);
         when(userService.findById(anyInt())).thenReturn(user);
         mockMvc.perform(post("/user/update/1").flashAttr("trade",user))
                 .andExpect(status().isForbidden());
