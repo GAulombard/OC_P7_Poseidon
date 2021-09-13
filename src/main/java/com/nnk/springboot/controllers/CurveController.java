@@ -124,7 +124,6 @@ public class CurveController {
         LOGGER.info("HTTP POST request received at /curvePoint/update/{id}");
 
         if (result.hasErrors()) {
-            LOGGER.debug("CurveController (update) -> Invalid fields provided");
             return "curvePoint/update";
         }
         curvePointService.save(curvePoint);

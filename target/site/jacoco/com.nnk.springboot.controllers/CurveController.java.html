@@ -124,12 +124,11 @@ import java.util.List;
 <span class="fc" id="L124">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/update/{id}&quot;);</span>
 
 <span class="fc bfc" id="L126" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L127">            LOGGER.debug(&quot;CurveController (update) -&gt; Invalid fields provided&quot;);</span>
-<span class="fc" id="L128">            return &quot;curvePoint/update&quot;;</span>
+<span class="fc" id="L127">            return &quot;curvePoint/update&quot;;</span>
         }
-<span class="fc" id="L130">        curvePointService.save(curvePoint);</span>
+<span class="fc" id="L129">        curvePointService.save(curvePoint);</span>
 
-<span class="fc" id="L132">        return &quot;redirect:/curvePoint/list&quot;;</span>
+<span class="fc" id="L131">        return &quot;redirect:/curvePoint/list&quot;;</span>
     }
 
 
@@ -142,9 +141,9 @@ import java.util.List;
      */
     @GetMapping(&quot;/curvePoint/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L145">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/delete/{id}&quot;);</span>
-<span class="fc" id="L146">        curvePointService.deleteById(id);</span>
-<span class="fc" id="L147">        return &quot;redirect:/curvePoint/list&quot;;</span>
+<span class="fc" id="L144">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/delete/{id}&quot;);</span>
+<span class="fc" id="L145">        curvePointService.deleteById(id);</span>
+<span class="fc" id="L146">        return &quot;redirect:/curvePoint/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

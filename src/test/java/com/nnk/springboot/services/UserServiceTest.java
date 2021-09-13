@@ -60,13 +60,39 @@ public class UserServiceTest {
     }
 
     @Test
-    void test_save_shouldThrowAlreadyExistsException() throws AlreadyExistsException {
+    void test_save_shouldThrowUsernameAlreadyExistsException() throws AlreadyExistsException {
         User user = new User("Test","Test","ROLE_ADMIN");
         user.setPassword("password");
         when(userRepository.existsByUsername(user.getUsername())).thenReturn(true);
         assertThrows(AlreadyExistsException.class,() -> userService.save(user));
     }
 
+    @Test
+    void test_save_shouldThrowFullNameAlreadyExistsException() throws AlreadyExistsException {
+        User user = new User("Test","Test","ROLE_ADMIN");
+        user.setPassword("password");
+        when(userRepository.existsByUsername(user.getUsername())).thenReturn(false);
+        when(userRepository.existsByFullName(user.getFullName())).thenReturn(true);
+        assertThrows(AlreadyExistsException.class,() -> userService.save(user));
+    }
+
+    @Test
+    void test_update() throws NotFoundException {
+        User user = new User("Test","Test","ROLE_ADMIN");
+        user.setPassword("password");
+        when(passwordEncoder.encode((anyString()))).thenReturn("password");
+        when(userRepository.existsByUsername(user.getUsername())).thenReturn(true);
+        when(userRepository.save(user)).thenReturn(user);
+        userService.update(user);
+        verify(userRepository).save(user);
+    }
+    @Test
+    void test_update_shouldThrowsNotFoundException() throws NotFoundException {
+        User user = new User("Test","Test","ROLE_ADMIN");
+        user.setPassword("password");
+        when(userRepository.existsByUsername(user.getUsername())).thenReturn(false);
+        assertThrows(NotFoundException.class,()->userService.update(user));
+    }
     @Test
     void test_findById() throws NotFoundException {
         User user = new User("Test","Test","ROLE_ADMIN");

@@ -50,8 +50,8 @@ import java.util.List;
 <span class="fc bfc" id="L50" title="All 2 branches covered.">        if(userRepository.existsByUsername(user.getUsername())) {</span>
 <span class="fc" id="L51">            throw new AlreadyExistsException(&quot;Username already exists&quot;);</span>
         }
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if(userRepository.existsByFullName(user.getFullName())) {</span>
-<span class="nc" id="L54">            throw new AlreadyExistsException(&quot;FullName already exists&quot;);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if(userRepository.existsByFullName(user.getFullName())) {</span>
+<span class="fc" id="L54">            throw new AlreadyExistsException(&quot;FullName already exists&quot;);</span>
         }
 
 <span class="fc" id="L57">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
@@ -67,17 +67,17 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public void update(User user) throws NotFoundException {
-<span class="nc" id="L70">        LOGGER.info(&quot;Process to save new user&quot;);</span>
+<span class="fc" id="L70">        LOGGER.info(&quot;Process to save new user&quot;);</span>
 
-<span class="nc bnc" id="L72" title="All 2 branches missed.">        if(!userRepository.existsByUsername(user.getUsername())) {</span>
-<span class="nc" id="L73">            throw new NotFoundException(&quot;User not found&quot;);</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if(!userRepository.existsByUsername(user.getUsername())) {</span>
+<span class="fc" id="L73">            throw new NotFoundException(&quot;User not found&quot;);</span>
         }
 
-<span class="nc" id="L76">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
+<span class="fc" id="L76">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
 
-<span class="nc" id="L78">        userRepository.save(user);</span>
+<span class="fc" id="L78">        userRepository.save(user);</span>
 
-<span class="nc" id="L80">    }</span>
+<span class="fc" id="L80">    }</span>
 
     /**
      * Find by id user.
