@@ -1,5 +1,6 @@
 package com.nnk.springboot.controllers;
 
+import com.nnk.springboot.annotation.UniqueValidator;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.exception.AlreadyExistsException;
 import com.nnk.springboot.exception.NotFoundException;
@@ -8,6 +9,7 @@ import com.nnk.springboot.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

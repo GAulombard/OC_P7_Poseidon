@@ -60,15 +60,20 @@ public class BidListServiceTest {
 
     @Test
     void test_findBidById_shouldThrowNotFoundException() throws NotFoundException {
-        BidList bidList = new BidList("Test account", "Test type", 10.00d);
         when(bidListRepository.existsById(anyInt())).thenReturn(false);
         assertThrows(NotFoundException.class,() -> bidListService.findBidById(anyInt()));
     }
 
     @Test
     void test_deleteBidById() throws NotFoundException {
+        when(bidListRepository.existsById(1)).thenReturn(true);
         doNothing().when(bidListRepository).deleteById(1);
         bidListService.deleteBidById(1);
         verify(bidListRepository).deleteById(1);
+    }
+    @Test
+    void test_deleteBidById_shouldThrowNotFoundException() throws NotFoundException {
+        when(bidListRepository.existsById(1)).thenReturn(false);
+        assertThrows(NotFoundException.class,()->bidListService.deleteBidById(1));
     }
 }

@@ -1,5 +1,6 @@
 package com.nnk.springboot.services;
 
+import com.nnk.springboot.annotation.UniqueValidator;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.exception.AlreadyExistsException;
 import com.nnk.springboot.exception.NotFoundException;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
