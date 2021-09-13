@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CurveController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.controllers</a> &gt; <span class="el_source">CurveController.java</span></div><h1>CurveController.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.controllers;
+
+import com.nnk.springboot.exception.AlreadyExistsException;
+import com.nnk.springboot.exception.NotFoundException;
+import com.nnk.springboot.services.CurvePointService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import com.nnk.springboot.domain.CurvePoint;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
+import java.util.List;
+
+/**
+ * The type Curve controller.
+ */
+@PreAuthorize(&quot;hasAnyRole('ADMIN','USER')&quot;)
+@Controller
+<span class="fc" id="L28">public class CurveController {</span>
+
+<span class="fc" id="L30">    private static Logger LOGGER = LoggerFactory.getLogger(CurveController.class);</span>
+
+    @Autowired
+    private CurvePointService curvePointService;
+
+
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @RequestMapping(&quot;/curvePoint/list&quot;)
+    public String home(Model model) {
+<span class="fc" id="L44">        LOGGER.info(&quot;HTTP request received at /curvePoint/list&quot;);</span>
+
+<span class="fc" id="L46">        List&lt;CurvePoint&gt; curvePointList = curvePointService.findAll();</span>
+
+<span class="fc" id="L48">        model.addAttribute(&quot;curvePointList&quot;, curvePointList);</span>
+
+<span class="fc" id="L50">        return &quot;curvePoint/list&quot;;</span>
+    }
+
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
+    @GetMapping(&quot;/curvePoint/add&quot;)
+    public String addForm(Model model) {
+<span class="fc" id="L61">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/add&quot;);</span>
+
+<span class="fc" id="L63">        model.addAttribute(&quot;curvePoint&quot;, new CurvePoint());</span>
+
+<span class="fc" id="L65">        return &quot;curvePoint/add&quot;;</span>
+    }
+
+    /**
+     * Validate string.
+     *
+     * @param curvePoint the curve point
+     * @param result     the result
+     * @return the string
+     * @throws AlreadyExistsException the already exists exception
+     */
+    @PostMapping(&quot;/curvePoint/validate&quot;)
+    public String validate(@Valid @ModelAttribute(&quot;curvePoint&quot;) CurvePoint curvePoint, BindingResult result) throws AlreadyExistsException {
+<span class="fc" id="L78">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/validate&quot;);</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L81">            LOGGER.debug(&quot;Invalid fields&quot;);</span>
+<span class="fc" id="L82">            return &quot;curvePoint/add&quot;;</span>
+        }
+<span class="fc" id="L84">        curvePointService.save(curvePoint);</span>
+
+<span class="fc" id="L86">        return &quot;redirect:/curvePoint/list&quot;;</span>
+    }
+
+
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
+    @GetMapping(&quot;/curvePoint/update/{id}&quot;)
+    public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
+<span class="fc" id="L100">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/update/{id}&quot;);</span>
+
+<span class="fc" id="L102">        CurvePoint curvePoint = curvePointService.findById(id);</span>
+
+
+<span class="fc" id="L105">        model.addAttribute(&quot;curvePoint&quot;, curvePoint);</span>
+
+<span class="fc" id="L107">        return &quot;curvePoint/update&quot;;</span>
+    }
+
+
+    /**
+     * Update string.
+     *
+     * @param id         the id
+     * @param curvePoint the curve point
+     * @param result     the result
+     * @param model      the model
+     * @return the string
+     * @throws AlreadyExistsException the already exists exception
+     */
+    @PostMapping(&quot;/curvePoint/update/{id}&quot;)
+    public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid CurvePoint curvePoint,
+                            BindingResult result, Model model) throws AlreadyExistsException {
+<span class="fc" id="L124">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/update/{id}&quot;);</span>
+
+<span class="fc bfc" id="L126" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L127">            LOGGER.debug(&quot;CurveController (update) -&gt; Invalid fields provided&quot;);</span>
+<span class="fc" id="L128">            return &quot;curvePoint/update&quot;;</span>
+        }
+<span class="fc" id="L130">        curvePointService.save(curvePoint);</span>
+
+<span class="fc" id="L132">        return &quot;redirect:/curvePoint/list&quot;;</span>
+    }
+
+
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
+    @GetMapping(&quot;/curvePoint/delete/{id}&quot;)
+    public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
+<span class="fc" id="L145">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/delete/{id}&quot;);</span>
+<span class="fc" id="L146">        curvePointService.deleteById(id);</span>
+<span class="fc" id="L147">        return &quot;redirect:/curvePoint/list&quot;;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -207,9 +207,9 @@
 				<configuration>
 					<excludes>
 						<exclude>com/nnk/springboot/domain/**</exclude>
-						<exclude>com/nnk/springboot/domain/config/**</exclude>
-						<exclude>com/nnk/springboot/domain/annotation/**</exclude>
-						<exclude>com/nnk/springboot/domain/security/**</exclude>
+						<exclude>com/nnk/springboot/config/**</exclude>
+						<exclude>com/nnk/springboot/annotation/**</exclude>
+						<exclude>com/nnk/springboot/security/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>
@@ -252,9 +252,9 @@
 				<configuration>
 					<excludes>
 						<exclude>com/nnk/springboot/domain/**</exclude>
-						<exclude>com/nnk/springboot/domain/config/**</exclude>
-						<exclude>com/nnk/springboot/domain/annotation/**</exclude>
-						<exclude>com/nnk/springboot/domain/security/**</exclude>
+						<exclude>com/nnk/springboot/config/**</exclude>
+						<exclude>com/nnk/springboot/annotation/**</exclude>
+						<exclude>com/nnk/springboot/security/**</exclude>
 					</excludes>
 				</configuration>
 				<reportSets>
