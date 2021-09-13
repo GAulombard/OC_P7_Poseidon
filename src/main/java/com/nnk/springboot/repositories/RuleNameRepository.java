@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
+/**
+ * The interface Rule name repository.
+ */
 @Repository
 public interface RuleNameRepository extends JpaRepository<RuleName, Integer> {
 }

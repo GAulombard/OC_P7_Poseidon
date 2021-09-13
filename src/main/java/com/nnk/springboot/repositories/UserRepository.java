@@ -10,13 +10,34 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 
+/**
+ * The interface User repository.
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
 
+    /**
+     * Find user by username optional.
+     *
+     * @param username the username
+     * @return the optional
+     */
     Optional<User> findUserByUsername(String username);
 
+    /**
+     * Exists by username boolean.
+     *
+     * @param username the username
+     * @return the boolean
+     */
     boolean existsByUsername(String username);
 
+    /**
+     * Exists by full name boolean.
+     *
+     * @param fullName the full name
+     * @return the boolean
+     */
     boolean existsByFullName(String fullName);
 
 }

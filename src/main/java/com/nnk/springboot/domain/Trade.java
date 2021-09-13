@@ -10,6 +10,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
+/**
+ * The type Trade.
+ */
 @Entity
 @Getter
 @Setter
@@ -87,10 +90,20 @@ public class Trade {
     @Column(name = "side")
     private String side;
 
+    /**
+     * Instantiates a new Trade.
+     */
     public Trade() {
 
     }
 
+    /**
+     * Instantiates a new Trade.
+     *
+     * @param account     the account
+     * @param type        the type
+     * @param buyQuantity the buy quantity
+     */
     public Trade(String account, String type, double buyQuantity) {
 
         this.buyQuantity = buyQuantity;

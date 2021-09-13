@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Bid list service.
+ */
 @Service
 public class BidListService {
 
@@ -18,18 +21,35 @@ public class BidListService {
     @Autowired
     private BidListRepository bidListRepository;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<BidList> findAll(){
         LOGGER.info("Process to find all existing bids");
 
         return bidListRepository.findAll();
     }
 
+    /**
+     * Save.
+     *
+     * @param bid the bid
+     */
     public void save(BidList bid) {
         LOGGER.info("Process to save a bid in database");
 
         bidListRepository.save(bid);
     }
 
+    /**
+     * Find bid by id bid list.
+     *
+     * @param id the id
+     * @return the bid list
+     * @throws NotFoundException the not found exception
+     */
     public BidList findBidById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find a bid by Id");
 
@@ -40,6 +60,12 @@ public class BidListService {
 
     }
 
+    /**
+     * Delete bid by id.
+     *
+     * @param id the id
+     * @throws NotFoundException the not found exception
+     */
     public void deleteBidById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete a bid by Id");
 

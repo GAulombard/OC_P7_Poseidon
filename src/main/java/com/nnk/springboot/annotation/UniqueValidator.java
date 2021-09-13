@@ -17,6 +17,9 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Unique validator.
+ */
 public class UniqueValidator implements ConstraintValidator<Unique, String> {
 
     @Autowired

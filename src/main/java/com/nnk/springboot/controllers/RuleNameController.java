@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * The type Rule name controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class RuleNameController {
@@ -30,6 +33,12 @@ public class RuleNameController {
     @Autowired
     private RuleNameService ruleNameService;
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/ruleName/list")
     public String home(Model model) {
         LOGGER.info("HTTP request received at /ruleName/list");
@@ -40,6 +49,12 @@ public class RuleNameController {
         return "ruleName/list";
     }
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/ruleName/add")
     public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /ruleName/add");
@@ -49,6 +64,13 @@ public class RuleNameController {
         return "ruleName/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param ruleName the rule name
+     * @param result   the result
+     * @return the string
+     */
     @PostMapping("/ruleName/validate")
     public String validate(@Valid @ModelAttribute("ruleName") RuleName ruleName, BindingResult result) {
         LOGGER.info("HTTP POST request received at /ruleName/validate");
@@ -63,6 +85,14 @@ public class RuleNameController {
     }
 
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /ruleName/update/{id}");
@@ -74,6 +104,15 @@ public class RuleNameController {
     }
 
 
+    /**
+     * Update string.
+     *
+     * @param id       the id
+     * @param ruleName the rule name
+     * @param result   the result
+     * @param model    the model
+     * @return the string
+     */
     @PostMapping("/ruleName/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                                  BindingResult result, Model model) {
@@ -89,6 +128,13 @@ public class RuleNameController {
     }
 
 
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/ruleName/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /ruleName/delete/{id}");

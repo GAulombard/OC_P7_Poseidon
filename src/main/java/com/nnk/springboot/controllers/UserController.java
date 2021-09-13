@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 
+/**
+ * The type User controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN')")
 @Controller
 public class UserController {
@@ -30,6 +33,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @param user  the user
+     * @return the string
+     */
     @RequestMapping("/user/list")
     public String home(Model model, Principal user)
     {
@@ -40,6 +50,12 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/user/add")
     public String addForm(Model model) {
         LOGGER.info("HTTP Get request received at /user/add");
@@ -49,6 +65,15 @@ public class UserController {
         return "user/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param user   the user
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     * @throws AlreadyExistsException the already exists exception
+     */
     @PostMapping("/user/validate")
     public String validate(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) throws AlreadyExistsException {
         LOGGER.info("HTTP POST request received at /user/validate");
@@ -62,6 +87,14 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /user/update/{id}");
@@ -73,6 +106,16 @@ public class UserController {
         return "user/update";
     }
 
+    /**
+     * Update string.
+     *
+     * @param id     the id
+     * @param user   the user
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @PostMapping("/user/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid User user,
                              BindingResult result, Model model) throws NotFoundException {
@@ -88,6 +131,14 @@ public class UserController {
         return "redirect:/user/list";
     }
 
+    /**
+     * Delete string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/user/delete/{id}")
     public String delete(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /user/delete/{id}");

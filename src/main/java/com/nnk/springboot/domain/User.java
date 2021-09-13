@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * The type User.
+ */
 @Entity
 @Getter
 @Setter
@@ -47,6 +50,9 @@ public class User implements UserDetails {
     @NotBlank(message = "Role is mandatory")
     private String role;
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {
 
     }
@@ -80,6 +86,13 @@ public class User implements UserDetails {
         return true;
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param username the username
+     * @param fullName the full name
+     * @param role     the role
+     */
     public User(String username, String fullName, String role) {
         this.username = username;
         this.fullName = fullName;

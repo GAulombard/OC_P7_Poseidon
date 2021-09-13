@@ -14,6 +14,9 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
+/**
+ * The type Curve point.
+ */
 @Entity
 @Getter
 @Setter
@@ -49,12 +52,22 @@ public class CurvePoint {
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
+    /**
+     * Instantiates a new Curve point.
+     *
+     * @param curveId the curve id
+     * @param term    the term
+     * @param value   the value
+     */
     public CurvePoint(Integer curveId, double term, double value) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
     }
 
+    /**
+     * Instantiates a new Curve point.
+     */
     public CurvePoint() {
 
     }

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type User service.
+ */
 @Service
 public class UserService {
 
@@ -24,12 +27,23 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<User> findAll() {
         LOGGER.info("Process to find all user");
 
         return userRepository.findAll();
     }
 
+    /**
+     * Save.
+     *
+     * @param user the user
+     * @throws AlreadyExistsException the already exists exception
+     */
     public void save(User user) throws AlreadyExistsException {
         LOGGER.info("Process to save new user");
 
@@ -46,6 +60,12 @@ public class UserService {
 
     }
 
+    /**
+     * Update.
+     *
+     * @param user the user
+     * @throws NotFoundException the not found exception
+     */
     public void update(User user) throws NotFoundException {
         LOGGER.info("Process to save new user");
 
@@ -59,6 +79,13 @@ public class UserService {
 
     }
 
+    /**
+     * Find by id user.
+     *
+     * @param id the id
+     * @return the user
+     * @throws NotFoundException the not found exception
+     */
     public User findById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find user by id");
 
@@ -69,6 +96,12 @@ public class UserService {
         return userRepository.getOne(id);
     }
 
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     * @throws NotFoundException the not found exception
+     */
     public void deleteById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete user by id");
 

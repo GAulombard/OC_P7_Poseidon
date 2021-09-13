@@ -11,6 +11,9 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+/**
+ * The type Bid list.
+ */
 @Entity
 @Getter
 @Setter
@@ -100,10 +103,20 @@ public class BidList {
     @Column(name = "side")
     private String side;
 
+    /**
+     * Instantiates a new Bid list.
+     */
     public BidList() {
 
     }
 
+    /**
+     * Instantiates a new Bid list.
+     *
+     * @param account     the account
+     * @param type        the type
+     * @param bidQuantity the bid quantity
+     */
     public BidList(String account, String type, double bidQuantity) {
 
         this.account = account;

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * The type Bid list controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class BidListController {
@@ -24,6 +27,13 @@ public class BidListController {
     @Autowired
     private BidListService bidListService;
 
+    /**
+     * Home string.
+     *
+     * @param user  the user
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/bidList/list")
     public String home(@AuthenticationPrincipal User user, Model model)
     {
@@ -34,6 +44,12 @@ public class BidListController {
         return "bidList/list";
     }
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/bidList/add")
     public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /bidList/add");
@@ -43,6 +59,13 @@ public class BidListController {
         return "bidList/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param bid           the bid
+     * @param bindingResult the binding result
+     * @return the string
+     */
     @PostMapping("/bidList/validate")
     public String validate(@Valid @ModelAttribute("bidList") BidList bid, BindingResult bindingResult) {
         LOGGER.info("HTTP POST request received at /bidList/validate");
@@ -57,6 +80,14 @@ public class BidListController {
         return "redirect:/bidList/list";
     }
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /bidList/update/{id}");
@@ -66,6 +97,16 @@ public class BidListController {
         return "bidList/update";
     }
 
+    /**
+     * Update string.
+     *
+     * @param id            the id
+     * @param bidList       the bid list
+     * @param bindingResult the binding result
+     * @param model         the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @PostMapping("/bidList/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult bindingResult, Model model) throws NotFoundException {
@@ -89,6 +130,13 @@ public class BidListController {
         return "redirect:/bidList/list";
     }
 
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/bidList/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /bidList/delete/{id}");

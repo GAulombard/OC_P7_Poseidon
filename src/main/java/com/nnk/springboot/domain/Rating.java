@@ -9,6 +9,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Timestamp;
 
+/**
+ * The type Rating.
+ */
 @Entity
 @Getter
 @Setter
@@ -39,6 +42,14 @@ public class Rating {
     @Column(name = "order_number")
     private Integer orderNumber;
 
+    /**
+     * Instantiates a new Rating.
+     *
+     * @param moodysRating the moodys rating
+     * @param sandPRating  the sand p rating
+     * @param fitchRating  the fitch rating
+     * @param orderNumber  the order number
+     */
     public Rating(String moodysRating, String sandPRating, String fitchRating, Integer orderNumber) {
         this.moodysRating = moodysRating;
         this.sandPRating = sandPRating;
@@ -46,6 +57,9 @@ public class Rating {
         this.orderNumber = orderNumber;
     }
 
+    /**
+     * Instantiates a new Rating.
+     */
     public Rating() {
 
     }

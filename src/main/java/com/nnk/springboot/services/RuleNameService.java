@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Rule name service.
+ */
 @Service
 public class RuleNameService {
 
@@ -18,18 +21,35 @@ public class RuleNameService {
     @Autowired
     private RuleNameRepository ruleNameRepository;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<RuleName> findAll() {
         LOGGER.info("Process to find all rule name");
 
         return ruleNameRepository.findAll();
     }
 
+    /**
+     * Save.
+     *
+     * @param ruleName the rule name
+     */
     public void save(RuleName ruleName) {
         LOGGER.info("Process to save new rule name");
 
         ruleNameRepository.save(ruleName);
     }
 
+    /**
+     * Find by id rule name.
+     *
+     * @param id the id
+     * @return the rule name
+     * @throws NotFoundException the not found exception
+     */
     public RuleName findById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find rule name by id");
 
@@ -38,6 +58,12 @@ public class RuleNameService {
         return ruleNameRepository.getOne(id);
     }
 
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     * @throws NotFoundException the not found exception
+     */
     public void deleteById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete rule name by id");
 

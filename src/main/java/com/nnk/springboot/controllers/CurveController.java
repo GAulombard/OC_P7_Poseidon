@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * The type Curve controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class CurveController {
@@ -30,6 +33,12 @@ public class CurveController {
     private CurvePointService curvePointService;
 
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/curvePoint/list")
     public String home(Model model) {
         LOGGER.info("HTTP request received at /curvePoint/list");
@@ -41,6 +50,12 @@ public class CurveController {
         return "curvePoint/list";
     }
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/curvePoint/add")
     public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /curvePoint/add");
@@ -50,6 +65,14 @@ public class CurveController {
         return "curvePoint/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param curvePoint the curve point
+     * @param result     the result
+     * @return the string
+     * @throws AlreadyExistsException the already exists exception
+     */
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid @ModelAttribute("curvePoint") CurvePoint curvePoint, BindingResult result) throws AlreadyExistsException {
         LOGGER.info("HTTP POST request received at /curvePoint/validate");
@@ -64,6 +87,14 @@ public class CurveController {
     }
 
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /curvePoint/update/{id}");
@@ -77,6 +108,16 @@ public class CurveController {
     }
 
 
+    /**
+     * Update string.
+     *
+     * @param id         the id
+     * @param curvePoint the curve point
+     * @param result     the result
+     * @param model      the model
+     * @return the string
+     * @throws AlreadyExistsException the already exists exception
+     */
     @PostMapping("/curvePoint/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) throws AlreadyExistsException {
@@ -92,6 +133,13 @@ public class CurveController {
     }
 
 
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/curvePoint/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /curvePoint/delete/{id}");

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Curve point service.
+ */
 @Service
 public class CurvePointService {
 
@@ -20,12 +23,23 @@ public class CurvePointService {
     @Autowired
     private CurvePointRepository curvePointRepository;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<CurvePoint> findAll() {
         LOGGER.info("Process to find all curve point");
 
         return curvePointRepository.findAll();
     }
 
+    /**
+     * Save.
+     *
+     * @param curvePoint the curve point
+     * @throws AlreadyExistsException the already exists exception
+     */
     public void save(CurvePoint curvePoint) throws AlreadyExistsException {
         LOGGER.info("Process to save new curve point");
 
@@ -34,6 +48,13 @@ public class CurvePointService {
         curvePointRepository.save(curvePoint);
     }
 
+    /**
+     * Find by id curve point.
+     *
+     * @param id the id
+     * @return the curve point
+     * @throws NotFoundException the not found exception
+     */
     public CurvePoint findById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find curve point by id");
 
@@ -42,6 +63,12 @@ public class CurvePointService {
         return curvePointRepository.getOne(id);
     }
 
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     * @throws NotFoundException the not found exception
+     */
     public void deleteById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete curve point by id");
 

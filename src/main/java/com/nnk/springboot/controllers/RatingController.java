@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * The type Rating controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class RatingController {
@@ -24,6 +27,12 @@ public class RatingController {
     @Autowired
     private RatingService ratingService;
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/rating/list")
     public String home(Model model) {
         LOGGER.info("HTTP request received at /rating/list");
@@ -36,6 +45,12 @@ public class RatingController {
     }
 
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/rating/add")
     public String addForm(Model model) {
 
@@ -47,6 +62,13 @@ public class RatingController {
         return "rating/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param rating the rating
+     * @param result the result
+     * @return the string
+     */
     @PostMapping("/rating/validate")
     public String validate(@Valid @ModelAttribute("rating") Rating rating, BindingResult result) {
         LOGGER.info("HTTP POST request received at /rating/validate");
@@ -61,6 +83,14 @@ public class RatingController {
     }
 
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /rating/update/{id}");
@@ -72,6 +102,15 @@ public class RatingController {
     }
 
 
+    /**
+     * Update string.
+     *
+     * @param id     the id
+     * @param rating the rating
+     * @param result the result
+     * @param model  the model
+     * @return the string
+     */
     @PostMapping("/rating/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid Rating rating,
                                BindingResult result, Model model) {
@@ -87,6 +126,13 @@ public class RatingController {
     }
 
 
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/rating/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /rating/delete/{id}");

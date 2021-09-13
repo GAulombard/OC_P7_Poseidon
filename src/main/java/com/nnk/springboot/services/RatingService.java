@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Rating service.
+ */
 @Service
 public class RatingService {
 
@@ -19,18 +22,35 @@ public class RatingService {
     @Autowired
     private RatingRepository ratingRepository;
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<Rating> findAll() {
         LOGGER.info("Process to find all rating");
 
         return ratingRepository.findAll();
     }
 
+    /**
+     * Save.
+     *
+     * @param rating the rating
+     */
     public void save(Rating rating) {
         LOGGER.info("Process to save new rating");
 
         ratingRepository.save(rating);
     }
 
+    /**
+     * Find by id rating.
+     *
+     * @param id the id
+     * @return the rating
+     * @throws NotFoundException the not found exception
+     */
     public Rating findById(Integer id) throws NotFoundException {
         LOGGER.info("Process to find rating by id");
 
@@ -39,6 +59,12 @@ public class RatingService {
         return ratingRepository.getOne(id);
     }
 
+    /**
+     * Delete by id.
+     *
+     * @param id the id
+     * @throws NotFoundException the not found exception
+     */
     public void deleteById(Integer id) throws NotFoundException {
         LOGGER.info("Process to delete rating by id");
 

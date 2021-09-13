@@ -18,11 +18,17 @@ import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClient
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+/**
+ * The type Spring security config.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * The User details service.
+     */
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -58,11 +64,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Password encoder password encoder.
+     *
+     * @return the password encoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Authentication success handler authentication success handler.
+     *
+     * @return the authentication success handler
+     */
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new UserAuthenticationSuccessHandler();

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * The type Trade controller.
+ */
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class TradeController {
@@ -25,6 +28,12 @@ public class TradeController {
     @Autowired
     private TradeService tradeService;
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/trade/list")
     public String home(Model model) {
         LOGGER.info("HTTP request received at /trade/list");
@@ -36,6 +45,12 @@ public class TradeController {
         return "trade/list";
     }
 
+    /**
+     * Add form string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @GetMapping("/trade/add")
     public String addForm(Model model) {
         LOGGER.info("HTTP GET request received at /trade/add");
@@ -45,6 +60,13 @@ public class TradeController {
         return "trade/add";
     }
 
+    /**
+     * Validate string.
+     *
+     * @param trade  the trade
+     * @param result the result
+     * @return the string
+     */
     @PostMapping("/trade/validate")
     public String validate(@Valid @ModelAttribute("trade") Trade trade, BindingResult result) {
         LOGGER.info("HTTP POST request received at /trade/validate");
@@ -58,6 +80,14 @@ public class TradeController {
         return "redirect:/trade/list";
     }
 
+    /**
+     * Show update form string.
+     *
+     * @param id    the id
+     * @param model the model
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         LOGGER.info("HTTP GET request received at /trade/update/{id}");
@@ -68,6 +98,14 @@ public class TradeController {
         return "trade/update";
     }
 
+    /**
+     * Update string.
+     *
+     * @param id     the id
+     * @param trade  the trade
+     * @param result the result
+     * @return the string
+     */
     @PostMapping("/trade/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid Trade trade,
                               BindingResult result) {
@@ -82,6 +120,13 @@ public class TradeController {
         return "redirect:/trade/list";
     }
 
+    /**
+     * Delete string.
+     *
+     * @param id the id
+     * @return the string
+     * @throws NotFoundException the not found exception
+     */
     @GetMapping("/trade/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
         LOGGER.info("HTTP request received at /trade/delete/{id}");

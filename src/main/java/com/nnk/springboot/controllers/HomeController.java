@@ -7,11 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * The type Home controller.
+ */
 @Controller
 public class HomeController
 {
 	private static Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
+    /**
+     * Home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @RequestMapping("/")
 	public String home(Model model)
 	{
@@ -20,6 +29,12 @@ public class HomeController
 		return "home";
 	}
 
+    /**
+     * Admin home string.
+     *
+     * @param model the model
+     * @return the string
+     */
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping("/admin/home")
 	public String adminHome(Model model){
