@@ -22,7 +22,8 @@ import javax.validation.Valid;
 @PreAuthorize(&quot;hasAnyRole('ADMIN','USER')&quot;)
 @Controller
 <span class="fc" id="L24">public class BidListController {</span>
-<span class="fc" id="L25">    private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);</span>
+
+<span class="fc" id="L26">    private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);</span>
 
     @Autowired
     private BidListService bidListService;
@@ -30,12 +31,11 @@ import javax.validation.Valid;
     /**
      * Home string.
      *
-     * @param user  the user
      * @param model the model
      * @return the string
      */
     @RequestMapping(&quot;/bidList/list&quot;)
-    public String home(@AuthenticationPrincipal User user, Model model)
+    public String home(Model model)
     {
 <span class="fc" id="L40">        LOGGER.info(&quot;HTTP GET request received at /bidList/list&quot;);</span>
 
@@ -71,7 +71,7 @@ import javax.validation.Valid;
 <span class="fc" id="L71">        LOGGER.info(&quot;HTTP POST request received at /bidList/validate&quot;);</span>
 
 <span class="fc bfc" id="L73" title="All 2 branches covered.">        if(bindingResult.hasErrors()) {</span>
-<span class="fc" id="L74">            LOGGER.info(&quot;invalid field(s)&quot;);</span>
+<span class="fc" id="L74">            LOGGER.info(&quot;Invalid field error&quot;);</span>
 <span class="fc" id="L75">            return &quot;bidList/add&quot;;</span>
         }
 
@@ -103,16 +103,16 @@ import javax.validation.Valid;
      * @param id            the id
      * @param bidList       the bid list
      * @param bindingResult the binding result
-     * @param model         the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @PostMapping(&quot;/bidList/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid BidList bidList,
-                             BindingResult bindingResult, Model model) throws NotFoundException {
-<span class="fc" id="L113">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{id}&quot;);</span>
+                             BindingResult bindingResult) throws NotFoundException {
+<span class="fc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{id}&quot;);</span>
 
-<span class="fc bfc" id="L115" title="All 2 branches covered.">       if(bindingResult.hasErrors()){</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">       if(bindingResult.hasErrors()){</span>
+<span class="fc" id="L115">           LOGGER.info(&quot;Invalid field error&quot;);</span>
 <span class="fc" id="L116">           return &quot;bidList/list&quot;;</span>
        }
 

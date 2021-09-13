@@ -74,12 +74,13 @@ import java.util.List;
 <span class="fc" id="L74">        LOGGER.info(&quot;HTTP POST request received at /rating/validate&quot;);</span>
 
 <span class="fc bfc" id="L76" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L77">            return &quot;rating/add&quot;;</span>
+<span class="fc" id="L77">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L78">            return &quot;rating/add&quot;;</span>
         }
 
-<span class="fc" id="L80">        ratingService.save(rating);</span>
+<span class="fc" id="L81">        ratingService.save(rating);</span>
 
-<span class="fc" id="L82">        return &quot;redirect:/rating/list&quot;;</span>
+<span class="fc" id="L83">        return &quot;redirect:/rating/list&quot;;</span>
     }
 
 
@@ -93,12 +94,12 @@ import java.util.List;
      */
     @GetMapping(&quot;/rating/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L96">        LOGGER.info(&quot;HTTP GET request received at /rating/update/{id}&quot;);</span>
+<span class="fc" id="L97">        LOGGER.info(&quot;HTTP GET request received at /rating/update/{id}&quot;);</span>
 
-<span class="fc" id="L98">        Rating rating = ratingService.findById(id);</span>
-<span class="fc" id="L99">        model.addAttribute(&quot;rating&quot;, rating);</span>
+<span class="fc" id="L99">        Rating rating = ratingService.findById(id);</span>
+<span class="fc" id="L100">        model.addAttribute(&quot;rating&quot;, rating);</span>
 
-<span class="fc" id="L101">        return &quot;rating/update&quot;;</span>
+<span class="fc" id="L102">        return &quot;rating/update&quot;;</span>
     }
 
 
@@ -114,15 +115,16 @@ import java.util.List;
     @PostMapping(&quot;/rating/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid Rating rating,
                                BindingResult result, Model model) {
-<span class="fc" id="L117">        LOGGER.info(&quot;HTTP POST request received at /rating/update/{id}&quot;);</span>
+<span class="fc" id="L118">        LOGGER.info(&quot;HTTP POST request received at /rating/update/{id}&quot;);</span>
 
-<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L120">            return &quot;rating/update&quot;;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L121">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L122">            return &quot;rating/update&quot;;</span>
         }
 
-<span class="fc" id="L123">        ratingService.save(rating);</span>
+<span class="fc" id="L125">        ratingService.save(rating);</span>
 
-<span class="fc" id="L125">        return &quot;redirect:/rating/list&quot;;</span>
+<span class="fc" id="L127">        return &quot;redirect:/rating/list&quot;;</span>
     }
 
 
@@ -135,11 +137,11 @@ import java.util.List;
      */
     @GetMapping(&quot;/rating/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L138">        LOGGER.info(&quot;HTTP GET request received at /rating/delete/{id}&quot;);</span>
+<span class="fc" id="L140">        LOGGER.info(&quot;HTTP GET request received at /rating/delete/{id}&quot;);</span>
 
-<span class="fc" id="L140">        ratingService.deleteById(id);</span>
+<span class="fc" id="L142">        ratingService.deleteById(id);</span>
 
-<span class="fc" id="L142">        return &quot;redirect:/rating/list&quot;;</span>
+<span class="fc" id="L144">        return &quot;redirect:/rating/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

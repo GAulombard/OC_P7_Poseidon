@@ -76,6 +76,7 @@ public class RuleNameController {
         LOGGER.info("HTTP POST request received at /ruleName/validate");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "ruleName/add";
         }
 
@@ -119,6 +120,7 @@ public class RuleNameController {
         LOGGER.info("HTTP POST request received at /ruleName/update/{id}");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "ruleName/update";
         }
 

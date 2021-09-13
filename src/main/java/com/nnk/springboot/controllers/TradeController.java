@@ -72,6 +72,7 @@ public class TradeController {
         LOGGER.info("HTTP POST request received at /trade/validate");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "trade/add";
         }
 
@@ -112,6 +113,7 @@ public class TradeController {
         LOGGER.info("HTTP POST request received at /trade/update/{id}");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "trade/update";
         }
 

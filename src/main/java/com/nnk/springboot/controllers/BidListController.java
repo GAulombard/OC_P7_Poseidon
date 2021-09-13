@@ -22,6 +22,7 @@ import javax.validation.Valid;
 @PreAuthorize("hasAnyRole('ADMIN','USER')")
 @Controller
 public class BidListController {
+
     private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);
 
     @Autowired
@@ -30,12 +31,11 @@ public class BidListController {
     /**
      * Home string.
      *
-     * @param user  the user
      * @param model the model
      * @return the string
      */
     @RequestMapping("/bidList/list")
-    public String home(@AuthenticationPrincipal User user, Model model)
+    public String home(Model model)
     {
         LOGGER.info("HTTP GET request received at /bidList/list");
 
@@ -71,7 +71,7 @@ public class BidListController {
         LOGGER.info("HTTP POST request received at /bidList/validate");
 
         if(bindingResult.hasErrors()) {
-            LOGGER.info("invalid field(s)");
+            LOGGER.info("Invalid field error");
             return "bidList/add";
         }
 
@@ -103,16 +103,16 @@ public class BidListController {
      * @param id            the id
      * @param bidList       the bid list
      * @param bindingResult the binding result
-     * @param model         the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @PostMapping("/bidList/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid BidList bidList,
-                             BindingResult bindingResult, Model model) throws NotFoundException {
+                             BindingResult bindingResult) throws NotFoundException {
         LOGGER.info("HTTP POST request received at /bidList/update/{id}");
 
        if(bindingResult.hasErrors()){
+           LOGGER.info("Invalid field error");
            return "bidList/list";
        }
 

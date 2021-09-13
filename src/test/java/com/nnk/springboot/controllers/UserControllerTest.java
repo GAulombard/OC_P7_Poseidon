@@ -116,7 +116,7 @@ public class UserControllerTest {
         User user = new User("test","test","ROLE_USER");
         when(userRepository.existsByUsername(anyString())).thenReturn(false);
         when(userRepository.existsByFullName(anyString())).thenReturn(false);
-        //when(uniqueValidator.isValid(anyString(),any())).thenReturn(true);
+        
         mockMvc.perform(post("/user/validate").flashAttr("user",user))
                 .andExpect(status().isOk());
     }

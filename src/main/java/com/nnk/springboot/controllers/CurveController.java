@@ -78,7 +78,7 @@ public class CurveController {
         LOGGER.info("HTTP POST request received at /curvePoint/validate");
 
         if (result.hasErrors()) {
-            LOGGER.debug("Invalid fields");
+            LOGGER.info("Invalid field error");
             return "curvePoint/add";
         }
         curvePointService.save(curvePoint);
@@ -124,6 +124,7 @@ public class CurveController {
         LOGGER.info("HTTP POST request received at /curvePoint/update/{id}");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "curvePoint/update";
         }
         curvePointService.save(curvePoint);

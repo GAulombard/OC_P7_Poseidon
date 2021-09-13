@@ -74,6 +74,7 @@ public class RatingController {
         LOGGER.info("HTTP POST request received at /rating/validate");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "rating/add";
         }
 
@@ -117,6 +118,7 @@ public class RatingController {
         LOGGER.info("HTTP POST request received at /rating/update/{id}");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "rating/update";
         }
 

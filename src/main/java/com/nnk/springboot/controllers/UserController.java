@@ -79,6 +79,7 @@ public class UserController {
         LOGGER.info("HTTP POST request received at /user/validate");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "user/add";
         }
 
@@ -122,6 +123,7 @@ public class UserController {
         LOGGER.info("HTTP POST request received at /user/update/{id}");
 
         if (result.hasErrors()) {
+            LOGGER.info("Invalid field error");
             return "user/update";
         }
 

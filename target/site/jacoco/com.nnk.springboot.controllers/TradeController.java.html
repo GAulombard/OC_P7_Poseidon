@@ -72,12 +72,13 @@ import java.util.List;
 <span class="fc" id="L72">        LOGGER.info(&quot;HTTP POST request received at /trade/validate&quot;);</span>
 
 <span class="fc bfc" id="L74" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L75">            return &quot;trade/add&quot;;</span>
+<span class="fc" id="L75">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L76">            return &quot;trade/add&quot;;</span>
         }
 
-<span class="fc" id="L78">        tradeService.save(trade);</span>
+<span class="fc" id="L79">        tradeService.save(trade);</span>
 
-<span class="fc" id="L80">        return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc" id="L81">        return &quot;redirect:/trade/list&quot;;</span>
     }
 
     /**
@@ -90,12 +91,12 @@ import java.util.List;
      */
     @GetMapping(&quot;/trade/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L93">        LOGGER.info(&quot;HTTP GET request received at /trade/update/{id}&quot;);</span>
+<span class="fc" id="L94">        LOGGER.info(&quot;HTTP GET request received at /trade/update/{id}&quot;);</span>
 
-<span class="fc" id="L95">        Trade trade = tradeService.findById(id);</span>
-<span class="fc" id="L96">        model.addAttribute(&quot;trade&quot;, trade);</span>
+<span class="fc" id="L96">        Trade trade = tradeService.findById(id);</span>
+<span class="fc" id="L97">        model.addAttribute(&quot;trade&quot;, trade);</span>
 
-<span class="fc" id="L98">        return &quot;trade/update&quot;;</span>
+<span class="fc" id="L99">        return &quot;trade/update&quot;;</span>
     }
 
     /**
@@ -109,15 +110,16 @@ import java.util.List;
     @PostMapping(&quot;/trade/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid Trade trade,
                               BindingResult result) {
-<span class="fc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /trade/update/{id}&quot;);</span>
+<span class="fc" id="L113">        LOGGER.info(&quot;HTTP POST request received at /trade/update/{id}&quot;);</span>
 
-<span class="fc bfc" id="L114" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L115">            return &quot;trade/update&quot;;</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L116">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L117">            return &quot;trade/update&quot;;</span>
         }
 
-<span class="fc" id="L118">        tradeService.save(trade);</span>
+<span class="fc" id="L120">        tradeService.save(trade);</span>
 
-<span class="fc" id="L120">        return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc" id="L122">        return &quot;redirect:/trade/list&quot;;</span>
     }
 
     /**
@@ -129,11 +131,11 @@ import java.util.List;
      */
     @GetMapping(&quot;/trade/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L132">        LOGGER.info(&quot;HTTP request received at /trade/delete/{id}&quot;);</span>
+<span class="fc" id="L134">        LOGGER.info(&quot;HTTP request received at /trade/delete/{id}&quot;);</span>
 
-<span class="fc" id="L134">        tradeService.deleteById(id);</span>
+<span class="fc" id="L136">        tradeService.deleteById(id);</span>
 
-<span class="fc" id="L136">        return &quot;redirect:/trade/list&quot;;</span>
+<span class="fc" id="L138">        return &quot;redirect:/trade/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

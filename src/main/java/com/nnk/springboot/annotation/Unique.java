@@ -27,13 +27,13 @@ public @interface Unique {
      *
      * @return the class [ ]
      */
-    Class<?>[] groups() default {};
+    Class<?>[] groups() default {}; //boilerplate
 
     /**
      * Payload class [ ].
      *
      * @return the class [ ]
      */
-    Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {}; //boilerplate
 
 }
