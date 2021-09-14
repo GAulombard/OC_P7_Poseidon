@@ -97,7 +97,7 @@ public class CurveController {
      */
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /curvePoint/update/{id}");
+        LOGGER.info("HTTP GET request received at /curvePoint/update/{"+id+"}");
 
         CurvePoint curvePoint = curvePointService.findById(id);
 
@@ -121,7 +121,7 @@ public class CurveController {
     @PostMapping("/curvePoint/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) throws AlreadyExistsException {
-        LOGGER.info("HTTP POST request received at /curvePoint/update/{id}");
+        LOGGER.info("HTTP POST request received at /curvePoint/update/{"+id+"}");
 
         if (result.hasErrors()) {
             LOGGER.info("Invalid field error");
@@ -142,7 +142,7 @@ public class CurveController {
      */
     @GetMapping("/curvePoint/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /curvePoint/delete/{id}");
+        LOGGER.info("HTTP GET request received at /curvePoint/delete/{"+id+"}");
         curvePointService.deleteById(id);
         return "redirect:/curvePoint/list";
     }

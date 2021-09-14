@@ -1,4 +1,7 @@
 package com.nnk.springboot.security;
+import com.nnk.springboot.services.BidListService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -17,10 +20,13 @@ import java.util.Map;
 
 /**
  * The type User authentication success handler.
+ * Determine the URL to redirect the user to after login based on the role of the user.
  */
 public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+    private static Logger LOGGER = LoggerFactory.getLogger(UserAuthenticationSuccessHandler.class);
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
@@ -55,13 +61,16 @@ public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHa
      * @param authentication the authentication
      * @return the string
      */
-    protected String determineTargetUrl(final Authentication authentication) {
+    protected String determineTargetUrl(final Authentication authentication) {//return the mapped URL for the first role the user has
 
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_USER", "/bidList/list");
         roleTargetUrlMap.put("ROLE_ADMIN", "/bidList/list");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        LOGGER.info("Authentication succeed: "+authorities);
+
         for (final GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
             if (roleTargetUrlMap.containsKey(authorityName)) {

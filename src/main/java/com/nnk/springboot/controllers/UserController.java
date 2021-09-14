@@ -70,12 +70,11 @@ public class UserController {
      *
      * @param user   the user
      * @param result the result
-     * @param model  the model
      * @return the string
      * @throws AlreadyExistsException the already exists exception
      */
     @PostMapping("/user/validate")
-    public String validate(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) throws AlreadyExistsException {
+    public String validate(@Valid @ModelAttribute("user") User user, BindingResult result) throws AlreadyExistsException {
         LOGGER.info("HTTP POST request received at /user/validate");
 
         if (result.hasErrors()) {
@@ -98,7 +97,7 @@ public class UserController {
      */
     @GetMapping("/user/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /user/update/{id}");
+        LOGGER.info("HTTP GET request received at /user/update/{"+id+"}");
 
         User user = userService.findById(id);
 
@@ -113,14 +112,13 @@ public class UserController {
      * @param id     the id
      * @param user   the user
      * @param result the result
-     * @param model  the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @PostMapping("/user/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid User user,
-                             BindingResult result, Model model) throws NotFoundException {
-        LOGGER.info("HTTP POST request received at /user/update/{id}");
+                             BindingResult result) throws NotFoundException {
+        LOGGER.info("HTTP POST request received at /user/update/{"+id+"}");
 
         if (result.hasErrors()) {
             LOGGER.info("Invalid field error");
@@ -137,13 +135,12 @@ public class UserController {
      * Delete string.
      *
      * @param id    the id
-     * @param model the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @GetMapping("/user/delete/{id}")
-    public String delete(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /user/delete/{id}");
+    public String delete(@PathVariable("id") Integer id) throws NotFoundException {
+        LOGGER.info("HTTP GET request received at /user/delete/{"+id+"}");
 
         userService.deleteById(id);
 

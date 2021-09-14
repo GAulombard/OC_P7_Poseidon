@@ -90,7 +90,7 @@ public class BidListController {
      */
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /bidList/update/{id}");
+        LOGGER.info("HTTP GET request received at /bidList/update/{"+id+"}");
 
         model.addAttribute("bidList",bidListService.findBidById(id));
 
@@ -109,7 +109,7 @@ public class BidListController {
     @PostMapping("/bidList/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult bindingResult) throws NotFoundException {
-        LOGGER.info("HTTP POST request received at /bidList/update/{id}");
+        LOGGER.info("HTTP POST request received at /bidList/update/{"+id+"}");
 
        if(bindingResult.hasErrors()){
            LOGGER.info("Invalid field error");
@@ -139,7 +139,7 @@ public class BidListController {
      */
     @GetMapping("/bidList/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /bidList/delete/{id}");
+        LOGGER.info("HTTP GET request received at /bidList/delete/{"+id+"}");
 
         bidListService.deleteBidById(id);
 

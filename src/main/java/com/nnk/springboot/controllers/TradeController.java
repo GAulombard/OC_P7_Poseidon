@@ -91,7 +91,7 @@ public class TradeController {
      */
     @GetMapping("/trade/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /trade/update/{id}");
+        LOGGER.info("HTTP GET request received at /trade/update/{"+id+"}");
 
         Trade trade = tradeService.findById(id);
         model.addAttribute("trade", trade);
@@ -110,7 +110,7 @@ public class TradeController {
     @PostMapping("/trade/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid Trade trade,
                               BindingResult result) {
-        LOGGER.info("HTTP POST request received at /trade/update/{id}");
+        LOGGER.info("HTTP POST request received at /trade/update/{"+id+"}");
 
         if (result.hasErrors()) {
             LOGGER.info("Invalid field error");
@@ -131,7 +131,7 @@ public class TradeController {
      */
     @GetMapping("/trade/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
-        LOGGER.info("HTTP request received at /trade/delete/{id}");
+        LOGGER.info("HTTP request received at /trade/delete/{"+id+"}");
 
         tradeService.deleteById(id);
 

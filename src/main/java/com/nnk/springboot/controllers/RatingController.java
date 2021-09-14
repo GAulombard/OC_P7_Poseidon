@@ -94,7 +94,7 @@ public class RatingController {
      */
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /rating/update/{id}");
+        LOGGER.info("HTTP GET request received at /rating/update/{"+id+"}");
 
         Rating rating = ratingService.findById(id);
         model.addAttribute("rating", rating);
@@ -115,7 +115,7 @@ public class RatingController {
     @PostMapping("/rating/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid Rating rating,
                                BindingResult result, Model model) {
-        LOGGER.info("HTTP POST request received at /rating/update/{id}");
+        LOGGER.info("HTTP POST request received at /rating/update/{"+id+"}");
 
         if (result.hasErrors()) {
             LOGGER.info("Invalid field error");
@@ -137,7 +137,7 @@ public class RatingController {
      */
     @GetMapping("/rating/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /rating/delete/{id}");
+        LOGGER.info("HTTP GET request received at /rating/delete/{"+id+"}");
 
         ratingService.deleteById(id);
 

@@ -96,7 +96,7 @@ public class RuleNameController {
      */
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /ruleName/update/{id}");
+        LOGGER.info("HTTP GET request received at /ruleName/update/{"+id+"}");
 
         RuleName ruleName = ruleNameService.findById(id);
         model.addAttribute("ruleName", ruleName);
@@ -111,13 +111,12 @@ public class RuleNameController {
      * @param id       the id
      * @param ruleName the rule name
      * @param result   the result
-     * @param model    the model
      * @return the string
      */
     @PostMapping("/ruleName/update/{id}")
     public String update(@PathVariable("id") Integer id, @Valid RuleName ruleName,
-                                 BindingResult result, Model model) {
-        LOGGER.info("HTTP POST request received at /ruleName/update/{id}");
+                                 BindingResult result) {
+        LOGGER.info("HTTP POST request received at /ruleName/update/{"+id+"}");
 
         if (result.hasErrors()) {
             LOGGER.info("Invalid field error");
@@ -139,7 +138,7 @@ public class RuleNameController {
      */
     @GetMapping("/ruleName/delete/{id}")
     public String delete(@PathVariable("id") Integer id) throws NotFoundException {
-        LOGGER.info("HTTP GET request received at /ruleName/delete/{id}");
+        LOGGER.info("HTTP GET request received at /ruleName/delete/{"+id+"}");
 
         ruleNameService.deleteById(id);
 

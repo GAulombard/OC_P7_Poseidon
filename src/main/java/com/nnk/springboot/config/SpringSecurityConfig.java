@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * The type Spring security config.
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // tell spring tu surpass security auto-configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -37,19 +37,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin()//generate a login page automatically
                 .successHandler(authenticationSuccessHandler()) // customise success authentication handler
                 .and()
                 .httpBasic()
                 .and()
-                .csrf()
-                .disable()
+                .csrf()//Cross Site Request Forgery attacks
+                .disable() //disable CSRF protection (enable by default)
                 .exceptionHandling()
                 //.accessDeniedPage("/user/**") forbidden page -> return 404 error
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/") //redirect to this page after logout
         ;
 
     }
@@ -61,6 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
+        //encode password using BCrypt
         return new BCryptPasswordEncoder();
     }
 
@@ -71,6 +72,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        //custom success authentication handler
         return new UserAuthenticationSuccessHandler();
     }
 }
