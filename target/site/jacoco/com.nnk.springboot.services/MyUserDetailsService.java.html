@@ -26,8 +26,8 @@ import java.util.Optional;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-<span class="nc" id="L29">        LOGGER.info(&quot;Process to authentication&quot;);</span>
-<span class="nc" id="L30">        return userRepository.findUserByUsername(username).orElseThrow(()-&gt; {return new UsernameNotFoundException(&quot;User not found&quot;);});</span>
+<span class="fc" id="L29">        LOGGER.info(&quot;Process to authentication&quot;);</span>
+<span class="pc" id="L30">        return userRepository.findUserByUsername(username).orElseThrow(()-&gt; {return new UsernameNotFoundException(&quot;User not found&quot;);});</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

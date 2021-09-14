@@ -17,7 +17,6 @@ D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoff
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\domain\Rating.java
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\exception\AlreadyExistsException.java
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\repositories\UserRepository.java
-D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\exception\ForbiddenException.java
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\controllers\RatingController.java
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\domain\Trade.java
 D:\DevInformatique\_OpenClasseRoom_DeveloppeurApllicationJava\P7_aulombard_geoffrey\Poseidon\src\main\java\com\nnk\springboot\domain\RuleName.java

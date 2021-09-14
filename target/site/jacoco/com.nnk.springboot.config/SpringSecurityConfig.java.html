@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * The type Spring security config.
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // tell spring tu surpass security auto-configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 <span class="nc" id="L27">public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {</span>
 
@@ -37,19 +37,19 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 <span class="nc" id="L37">                .authorizeRequests()</span>
 <span class="nc" id="L38">                .anyRequest().authenticated()</span>
 <span class="nc" id="L39">                .and()</span>
-<span class="nc" id="L40">                .formLogin()</span>
+<span class="nc" id="L40">                .formLogin()//generate a login page automatically</span>
 <span class="nc" id="L41">                .successHandler(authenticationSuccessHandler()) // customise success authentication handler</span>
 <span class="nc" id="L42">                .and()</span>
 <span class="nc" id="L43">                .httpBasic()</span>
 <span class="nc" id="L44">                .and()</span>
-<span class="nc" id="L45">                .csrf()</span>
-<span class="nc" id="L46">                .disable()</span>
+<span class="nc" id="L45">                .csrf()//Cross Site Request Forgery attacks</span>
+<span class="nc" id="L46">                .disable() //disable CSRF protection (enable by default)</span>
 <span class="nc" id="L47">                .exceptionHandling()</span>
                 //.accessDeniedPage(&quot;/user/**&quot;) forbidden page -&gt; return 404 error
 <span class="nc" id="L49">                .and()</span>
 <span class="nc" id="L50">                .logout()</span>
 <span class="nc" id="L51">                .logoutUrl(&quot;/logout&quot;)</span>
-<span class="nc" id="L52">                .logoutSuccessUrl(&quot;/&quot;)</span>
+<span class="nc" id="L52">                .logoutSuccessUrl(&quot;/&quot;) //redirect to this page after logout</span>
         ;
 
 <span class="nc" id="L55">    }</span>
@@ -61,7 +61,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
-<span class="nc" id="L64">        return new BCryptPasswordEncoder();</span>
+        //encode password using BCrypt
+<span class="nc" id="L65">        return new BCryptPasswordEncoder();</span>
     }
 
     /**
@@ -71,7 +72,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
      */
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
-<span class="nc" id="L74">        return new UserAuthenticationSuccessHandler();</span>
+        //custom success authentication handler
+<span class="nc" id="L76">        return new UserAuthenticationSuccessHandler();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

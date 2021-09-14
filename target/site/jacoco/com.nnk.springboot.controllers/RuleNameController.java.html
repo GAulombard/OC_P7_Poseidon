@@ -96,7 +96,7 @@ import java.util.List;
      */
     @GetMapping(&quot;/ruleName/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L99">        LOGGER.info(&quot;HTTP GET request received at /ruleName/update/{id}&quot;);</span>
+<span class="fc" id="L99">        LOGGER.info(&quot;HTTP GET request received at /ruleName/update/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc" id="L101">        RuleName ruleName = ruleNameService.findById(id);</span>
 <span class="fc" id="L102">        model.addAttribute(&quot;ruleName&quot;, ruleName);</span>
@@ -111,22 +111,21 @@ import java.util.List;
      * @param id       the id
      * @param ruleName the rule name
      * @param result   the result
-     * @param model    the model
      * @return the string
      */
     @PostMapping(&quot;/ruleName/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid RuleName ruleName,
-                                 BindingResult result, Model model) {
-<span class="fc" id="L120">        LOGGER.info(&quot;HTTP POST request received at /ruleName/update/{id}&quot;);</span>
+                                 BindingResult result) {
+<span class="fc" id="L119">        LOGGER.info(&quot;HTTP POST request received at /ruleName/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L123">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L124">            return &quot;ruleName/update&quot;;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L122">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L123">            return &quot;ruleName/update&quot;;</span>
         }
 
-<span class="fc" id="L127">        ruleNameService.save(ruleName);</span>
+<span class="fc" id="L126">        ruleNameService.save(ruleName);</span>
 
-<span class="fc" id="L129">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L128">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 
 
@@ -139,11 +138,11 @@ import java.util.List;
      */
     @GetMapping(&quot;/ruleName/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L142">        LOGGER.info(&quot;HTTP GET request received at /ruleName/delete/{id}&quot;);</span>
+<span class="fc" id="L141">        LOGGER.info(&quot;HTTP GET request received at /ruleName/delete/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L144">        ruleNameService.deleteById(id);</span>
+<span class="fc" id="L143">        ruleNameService.deleteById(id);</span>
 
-<span class="fc" id="L146">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L145">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

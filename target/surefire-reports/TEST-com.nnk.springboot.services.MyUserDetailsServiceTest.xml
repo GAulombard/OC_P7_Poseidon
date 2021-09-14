@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.nnk.springboot.controllers.HomeControllerTest" time="1.992" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.nnk.springboot.services.MyUserDetailsServiceTest" time="0.014" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -60,9 +60,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="test_adminHome_expectForbiddenAccess" classname="com.nnk.springboot.controllers.HomeControllerTest" time="0.014"/>
-  <testcase name="test_home_mockUser" classname="com.nnk.springboot.controllers.HomeControllerTest" time="0.045"/>
-  <testcase name="test_adminHome_expectUnauthorizedAccess" classname="com.nnk.springboot.controllers.HomeControllerTest" time="0.012"/>
-  <testcase name="test_home" classname="com.nnk.springboot.controllers.HomeControllerTest" time="0.191"/>
-  <testcase name="test_adminHome" classname="com.nnk.springboot.controllers.HomeControllerTest" time="0.236"/>
+  <testcase name="test_loadUserByUserName" classname="com.nnk.springboot.services.MyUserDetailsServiceTest" time="0.008"/>
+  <testcase name="test_loadUserByUserName_shouldThrowsUsernameNotFoundException" classname="com.nnk.springboot.services.MyUserDetailsServiceTest" time="0.004"/>
 </testsuite>

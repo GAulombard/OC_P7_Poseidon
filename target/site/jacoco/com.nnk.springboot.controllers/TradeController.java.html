@@ -91,7 +91,7 @@ import java.util.List;
      */
     @GetMapping(&quot;/trade/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L94">        LOGGER.info(&quot;HTTP GET request received at /trade/update/{id}&quot;);</span>
+<span class="fc" id="L94">        LOGGER.info(&quot;HTTP GET request received at /trade/update/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc" id="L96">        Trade trade = tradeService.findById(id);</span>
 <span class="fc" id="L97">        model.addAttribute(&quot;trade&quot;, trade);</span>
@@ -110,7 +110,7 @@ import java.util.List;
     @PostMapping(&quot;/trade/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid Trade trade,
                               BindingResult result) {
-<span class="fc" id="L113">        LOGGER.info(&quot;HTTP POST request received at /trade/update/{id}&quot;);</span>
+<span class="fc" id="L113">        LOGGER.info(&quot;HTTP POST request received at /trade/update/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc bfc" id="L115" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
 <span class="fc" id="L116">            LOGGER.info(&quot;Invalid field error&quot;);</span>
@@ -131,7 +131,7 @@ import java.util.List;
      */
     @GetMapping(&quot;/trade/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L134">        LOGGER.info(&quot;HTTP request received at /trade/delete/{id}&quot;);</span>
+<span class="fc" id="L134">        LOGGER.info(&quot;HTTP request received at /trade/delete/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc" id="L136">        tradeService.deleteById(id);</span>
 

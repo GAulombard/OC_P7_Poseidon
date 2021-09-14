@@ -70,22 +70,21 @@ import java.security.Principal;
      *
      * @param user   the user
      * @param result the result
-     * @param model  the model
      * @return the string
      * @throws AlreadyExistsException the already exists exception
      */
     @PostMapping(&quot;/user/validate&quot;)
-    public String validate(@Valid @ModelAttribute(&quot;user&quot;) User user, BindingResult result, Model model) throws AlreadyExistsException {
-<span class="fc" id="L79">        LOGGER.info(&quot;HTTP POST request received at /user/validate&quot;);</span>
+    public String validate(@Valid @ModelAttribute(&quot;user&quot;) User user, BindingResult result) throws AlreadyExistsException {
+<span class="fc" id="L78">        LOGGER.info(&quot;HTTP POST request received at /user/validate&quot;);</span>
 
-<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L82">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L83">            return &quot;user/add&quot;;</span>
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L81">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L82">            return &quot;user/add&quot;;</span>
         }
 
-<span class="nc" id="L86">        userService.save(user);</span>
+<span class="nc" id="L85">        userService.save(user);</span>
 
-<span class="nc" id="L88">        return &quot;redirect:/user/list&quot;;</span>
+<span class="nc" id="L87">        return &quot;redirect:/user/list&quot;;</span>
     }
 
     /**
@@ -98,13 +97,13 @@ import java.security.Principal;
      */
     @GetMapping(&quot;/user/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L101">        LOGGER.info(&quot;HTTP GET request received at /user/update/{id}&quot;);</span>
+<span class="fc" id="L100">        LOGGER.info(&quot;HTTP GET request received at /user/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L103">        User user = userService.findById(id);</span>
+<span class="fc" id="L102">        User user = userService.findById(id);</span>
 
-<span class="fc" id="L105">        model.addAttribute(&quot;user&quot;, user);</span>
+<span class="fc" id="L104">        model.addAttribute(&quot;user&quot;, user);</span>
 
-<span class="fc" id="L107">        return &quot;user/update&quot;;</span>
+<span class="fc" id="L106">        return &quot;user/update&quot;;</span>
     }
 
     /**
@@ -113,41 +112,39 @@ import java.security.Principal;
      * @param id     the id
      * @param user   the user
      * @param result the result
-     * @param model  the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @PostMapping(&quot;/user/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid User user,
-                             BindingResult result, Model model) throws NotFoundException {
-<span class="fc" id="L123">        LOGGER.info(&quot;HTTP POST request received at /user/update/{id}&quot;);</span>
+                             BindingResult result) throws NotFoundException {
+<span class="fc" id="L121">        LOGGER.info(&quot;HTTP POST request received at /user/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L126">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L127">            return &quot;user/update&quot;;</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        if (result.hasErrors()) {</span>
+<span class="fc" id="L124">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="fc" id="L125">            return &quot;user/update&quot;;</span>
         }
 
-<span class="nc" id="L130">        userService.update(user);</span>
+<span class="nc" id="L128">        userService.update(user);</span>
 
 
-<span class="nc" id="L133">        return &quot;redirect:/user/list&quot;;</span>
+<span class="nc" id="L131">        return &quot;redirect:/user/list&quot;;</span>
     }
 
     /**
      * Delete string.
      *
      * @param id    the id
-     * @param model the model
      * @return the string
      * @throws NotFoundException the not found exception
      */
     @GetMapping(&quot;/user/delete/{id}&quot;)
-    public String delete(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L146">        LOGGER.info(&quot;HTTP GET request received at /user/delete/{id}&quot;);</span>
+    public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
+<span class="fc" id="L143">        LOGGER.info(&quot;HTTP GET request received at /user/delete/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L148">        userService.deleteById(id);</span>
+<span class="fc" id="L145">        userService.deleteById(id);</span>
 
-<span class="fc" id="L150">        return &quot;redirect:/user/list&quot;;</span>
+<span class="fc" id="L147">        return &quot;redirect:/user/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

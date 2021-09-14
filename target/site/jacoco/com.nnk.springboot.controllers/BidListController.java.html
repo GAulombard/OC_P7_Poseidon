@@ -90,7 +90,7 @@ import javax.validation.Valid;
      */
     @GetMapping(&quot;/bidList/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L93">        LOGGER.info(&quot;HTTP GET request received at /bidList/update/{id}&quot;);</span>
+<span class="fc" id="L93">        LOGGER.info(&quot;HTTP GET request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc" id="L95">        model.addAttribute(&quot;bidList&quot;,bidListService.findBidById(id));</span>
 
@@ -109,7 +109,7 @@ import javax.validation.Valid;
     @PostMapping(&quot;/bidList/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid BidList bidList,
                              BindingResult bindingResult) throws NotFoundException {
-<span class="fc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{id}&quot;);</span>
+<span class="fc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc bfc" id="L114" title="All 2 branches covered.">       if(bindingResult.hasErrors()){</span>
 <span class="fc" id="L115">           LOGGER.info(&quot;Invalid field error&quot;);</span>
@@ -139,7 +139,7 @@ import javax.validation.Valid;
      */
     @GetMapping(&quot;/bidList/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L142">        LOGGER.info(&quot;HTTP GET request received at /bidList/delete/{id}&quot;);</span>
+<span class="fc" id="L142">        LOGGER.info(&quot;HTTP GET request received at /bidList/delete/{&quot;+id+&quot;}&quot;);</span>
 
 <span class="fc" id="L144">        bidListService.deleteBidById(id);</span>
 
