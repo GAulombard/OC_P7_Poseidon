@@ -263,6 +263,8 @@
 					</dependency>
 				</dependencies>
 				<configuration>
+					<forkedProcessExitTimeoutInSeconds>60</forkedProcessExitTimeoutInSeconds>
+					<forkCount>1</forkCount>
 					<argLine>@{surefire.jacoco.args}</argLine>
 				</configuration>
 			</plugin>

@@ -50,15 +50,12 @@ import java.util.List;
 <span class="fc bfc" id="L50" title="All 2 branches covered.">        if(userRepository.existsByUsername(user.getUsername())) {</span>
 <span class="fc" id="L51">            throw new AlreadyExistsException(&quot;Username already exists&quot;);</span>
         }
-<span class="fc bfc" id="L53" title="All 2 branches covered.">        if(userRepository.existsByFullName(user.getFullName())) {</span>
-<span class="fc" id="L54">            throw new AlreadyExistsException(&quot;FullName already exists&quot;);</span>
-        }
 
-<span class="fc" id="L57">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
+<span class="fc" id="L54">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
 
-<span class="fc" id="L59">        userRepository.save(user);</span>
+<span class="fc" id="L56">        userRepository.save(user);</span>
 
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L58">    }</span>
 
     /**
      * Update.
@@ -67,17 +64,17 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public void update(User user) throws NotFoundException {
-<span class="fc" id="L70">        LOGGER.info(&quot;Process to save new user&quot;);</span>
+<span class="fc" id="L67">        LOGGER.info(&quot;Process to save new user&quot;);</span>
 
-<span class="fc bfc" id="L72" title="All 2 branches covered.">        if(!userRepository.existsByUsername(user.getUsername())) {</span>
-<span class="fc" id="L73">            throw new NotFoundException(&quot;User not found&quot;);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if(!userRepository.existsByUsername(user.getUsername())) {</span>
+<span class="fc" id="L70">            throw new NotFoundException(&quot;User not found&quot;);</span>
         }
 
-<span class="fc" id="L76">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
+<span class="fc" id="L73">        user.setPassword(passwordEncoder.encode(user.getPassword()));</span>
 
-<span class="fc" id="L78">        userRepository.save(user);</span>
+<span class="fc" id="L75">        userRepository.save(user);</span>
 
-<span class="fc" id="L80">    }</span>
+<span class="fc" id="L77">    }</span>
 
     /**
      * Find by id user.
@@ -87,13 +84,13 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public User findById(Integer id) throws NotFoundException {
-<span class="fc" id="L90">        LOGGER.info(&quot;Process to find user by id&quot;);</span>
+<span class="fc" id="L87">        LOGGER.info(&quot;Process to find user by id&quot;);</span>
 
-<span class="fc bfc" id="L92" title="All 2 branches covered.">        if(!userRepository.existsById(id)) {</span>
-<span class="fc" id="L93">            throw new NotFoundException(&quot;User not found&quot;);</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if(!userRepository.existsById(id)) {</span>
+<span class="fc" id="L90">            throw new NotFoundException(&quot;User not found&quot;);</span>
         }
 
-<span class="fc" id="L96">        return userRepository.getOne(id);</span>
+<span class="fc" id="L93">        return userRepository.getOne(id);</span>
     }
 
     /**
@@ -103,14 +100,14 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public void deleteById(Integer id) throws NotFoundException {
-<span class="fc" id="L106">        LOGGER.info(&quot;Process to delete user by id&quot;);</span>
+<span class="fc" id="L103">        LOGGER.info(&quot;Process to delete user by id&quot;);</span>
 
-<span class="fc bfc" id="L108" title="All 2 branches covered.">        if(!userRepository.existsById(id)) {</span>
-<span class="fc" id="L109">            throw new NotFoundException(&quot;User not found&quot;);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if(!userRepository.existsById(id)) {</span>
+<span class="fc" id="L106">            throw new NotFoundException(&quot;User not found&quot;);</span>
         }
 
-<span class="fc" id="L112">        userRepository.deleteById(id);</span>
+<span class="fc" id="L109">        userRepository.deleteById(id);</span>
 
-<span class="fc" id="L114">    }</span>
+<span class="fc" id="L111">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -17,17 +17,17 @@ import java.util.Optional;
  * The type My user details service.
  */
 @Service
-<span class="fc" id="L20">public class MyUserDetailsService implements UserDetailsService {</span>
+<span class="nc" id="L20">public class MyUserDetailsService implements UserDetailsService {</span>
 
-<span class="fc" id="L22">    private final Logger LOGGER = LoggerFactory.getLogger(MyUserDetailsService.class);</span>
+<span class="nc" id="L22">    private final Logger LOGGER = LoggerFactory.getLogger(MyUserDetailsService.class);</span>
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-<span class="fc" id="L29">        LOGGER.info(&quot;Process to authentication&quot;);</span>
-<span class="pc" id="L30">        return userRepository.findUserByUsername(username).orElseThrow(()-&gt; {return new UsernameNotFoundException(&quot;User not found&quot;);});</span>
+<span class="nc" id="L29">        LOGGER.info(&quot;Process to authentication&quot;);</span>
+<span class="nc" id="L30">        return userRepository.findUserByUsername(username).orElseThrow(()-&gt; {return new UsernameNotFoundException(&quot;User not found&quot;);});</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -30,7 +30,7 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "username",unique = true)
+    @Column(name = "username")
     @NotBlank(message = "Username is mandatory")
     @Unique
     private String username;
@@ -41,9 +41,8 @@ public class User implements UserDetails {
     @NotBlank(message = "Password is mandatory")
     private String password;
 
-    @Column(name = "full_name",unique = true)
+    @Column(name = "full_name")
     @NotBlank(message = "FullName is mandatory")
-    @Unique
     private String fullName;
 
     @Column(name = "role")

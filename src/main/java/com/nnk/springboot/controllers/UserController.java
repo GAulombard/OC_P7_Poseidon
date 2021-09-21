@@ -134,7 +134,7 @@ public class UserController {
     /**
      * Delete string.
      *
-     * @param id    the id
+     * @param id the id
      * @return the string
      * @throws NotFoundException the not found exception
      */

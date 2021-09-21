@@ -20,7 +20,7 @@ public @interface Unique {
      *
      * @return the string
      */
-    String message() default "This char sequence already exists";
+    String message() default "This username already exists, choose another one";
 
     /**
      * Groups class [ ].

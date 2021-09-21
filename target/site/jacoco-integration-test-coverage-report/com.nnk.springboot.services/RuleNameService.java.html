@@ -14,9 +14,9 @@ import java.util.List;
  * The type Rule name service.
  */
 @Service
-<span class="fc" id="L17">public class RuleNameService {</span>
+<span class="nc" id="L17">public class RuleNameService {</span>
 
-<span class="fc" id="L19">    private static Logger LOGGER = LoggerFactory.getLogger(RuleNameService.class);</span>
+<span class="nc" id="L19">    private static Logger LOGGER = LoggerFactory.getLogger(RuleNameService.class);</span>
 
     @Autowired
     private RuleNameRepository ruleNameRepository;
@@ -27,9 +27,9 @@ import java.util.List;
      * @return the list
      */
     public List&lt;RuleName&gt; findAll() {
-<span class="fc" id="L30">        LOGGER.info(&quot;Process to find all rule name&quot;);</span>
+<span class="nc" id="L30">        LOGGER.info(&quot;Process to find all rule name&quot;);</span>
 
-<span class="fc" id="L32">        return ruleNameRepository.findAll();</span>
+<span class="nc" id="L32">        return ruleNameRepository.findAll();</span>
     }
 
     /**
@@ -38,10 +38,10 @@ import java.util.List;
      * @param ruleName the rule name
      */
     public void save(RuleName ruleName) {
-<span class="fc" id="L41">        LOGGER.info(&quot;Process to save new rule name&quot;);</span>
+<span class="nc" id="L41">        LOGGER.info(&quot;Process to save new rule name&quot;);</span>
 
-<span class="fc" id="L43">        ruleNameRepository.save(ruleName);</span>
-<span class="fc" id="L44">    }</span>
+<span class="nc" id="L43">        ruleNameRepository.save(ruleName);</span>
+<span class="nc" id="L44">    }</span>
 
     /**
      * Find by id rule name.
@@ -51,11 +51,11 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public RuleName findById(Integer id) throws NotFoundException {
-<span class="fc" id="L54">        LOGGER.info(&quot;Process to find rule name by id&quot;);</span>
+<span class="nc" id="L54">        LOGGER.info(&quot;Process to find rule name by id&quot;);</span>
 
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if(!ruleNameRepository.existsById(id)) throw new NotFoundException(&quot;rule name not found&quot;);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if(!ruleNameRepository.existsById(id)) throw new NotFoundException(&quot;rule name not found&quot;);</span>
 
-<span class="fc" id="L58">        return ruleNameRepository.getOne(id);</span>
+<span class="nc" id="L58">        return ruleNameRepository.getOne(id);</span>
     }
 
     /**
@@ -65,12 +65,12 @@ import java.util.List;
      * @throws NotFoundException the not found exception
      */
     public void deleteById(Integer id) throws NotFoundException {
-<span class="fc" id="L68">        LOGGER.info(&quot;Process to delete rule name by id&quot;);</span>
+<span class="nc" id="L68">        LOGGER.info(&quot;Process to delete rule name by id&quot;);</span>
 
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if(!ruleNameRepository.existsById(id)) throw new NotFoundException(&quot;rule name not found&quot;);</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if(!ruleNameRepository.existsById(id)) throw new NotFoundException(&quot;rule name not found&quot;);</span>
 
-<span class="fc" id="L72">        ruleNameRepository.deleteById(id);;</span>
+<span class="nc" id="L72">        ruleNameRepository.deleteById(id);;</span>
 
-<span class="fc" id="L74">    }</span>
+<span class="nc" id="L74">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

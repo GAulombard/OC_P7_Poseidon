@@ -21,9 +21,9 @@ import javax.validation.Valid;
  */
 @PreAuthorize(&quot;hasAnyRole('ADMIN','USER')&quot;)
 @Controller
-<span class="fc" id="L24">public class BidListController {</span>
+<span class="nc" id="L24">public class BidListController {</span>
 
-<span class="fc" id="L26">    private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);</span>
+<span class="nc" id="L26">    private static Logger LOGGER = LoggerFactory.getLogger(BidListController.class);</span>
 
     @Autowired
     private BidListService bidListService;
@@ -37,11 +37,11 @@ import javax.validation.Valid;
     @RequestMapping(&quot;/bidList/list&quot;)
     public String home(Model model)
     {
-<span class="fc" id="L40">        LOGGER.info(&quot;HTTP GET request received at /bidList/list&quot;);</span>
+<span class="nc" id="L40">        LOGGER.info(&quot;HTTP GET request received at /bidList/list&quot;);</span>
 
-<span class="fc" id="L42">        model.addAttribute(&quot;bidList&quot;,bidListService.findAll());</span>
+<span class="nc" id="L42">        model.addAttribute(&quot;bidList&quot;,bidListService.findAll());</span>
 
-<span class="fc" id="L44">        return &quot;bidList/list&quot;;</span>
+<span class="nc" id="L44">        return &quot;bidList/list&quot;;</span>
     }
 
     /**
@@ -52,11 +52,11 @@ import javax.validation.Valid;
      */
     @GetMapping(&quot;/bidList/add&quot;)
     public String addForm(Model model) {
-<span class="fc" id="L55">        LOGGER.info(&quot;HTTP GET request received at /bidList/add&quot;);</span>
+<span class="nc" id="L55">        LOGGER.info(&quot;HTTP GET request received at /bidList/add&quot;);</span>
 
-<span class="fc" id="L57">        model.addAttribute(&quot;bidList&quot;, new BidList());</span>
+<span class="nc" id="L57">        model.addAttribute(&quot;bidList&quot;, new BidList());</span>
 
-<span class="fc" id="L59">        return &quot;bidList/add&quot;;</span>
+<span class="nc" id="L59">        return &quot;bidList/add&quot;;</span>
     }
 
     /**
@@ -68,16 +68,16 @@ import javax.validation.Valid;
      */
     @PostMapping(&quot;/bidList/validate&quot;)
     public String validate(@Valid @ModelAttribute(&quot;bidList&quot;) BidList bid, BindingResult bindingResult) {
-<span class="fc" id="L71">        LOGGER.info(&quot;HTTP POST request received at /bidList/validate&quot;);</span>
+<span class="nc" id="L71">        LOGGER.info(&quot;HTTP POST request received at /bidList/validate&quot;);</span>
 
-<span class="fc bfc" id="L73" title="All 2 branches covered.">        if(bindingResult.hasErrors()) {</span>
-<span class="fc" id="L74">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L75">            return &quot;bidList/add&quot;;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(bindingResult.hasErrors()) {</span>
+<span class="nc" id="L74">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="nc" id="L75">            return &quot;bidList/add&quot;;</span>
         }
 
-<span class="fc" id="L78">        bidListService.save(bid);</span>
+<span class="nc" id="L78">        bidListService.save(bid);</span>
 
-<span class="fc" id="L80">        return &quot;redirect:/bidList/list&quot;;</span>
+<span class="nc" id="L80">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 
     /**
@@ -90,11 +90,11 @@ import javax.validation.Valid;
      */
     @GetMapping(&quot;/bidList/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L93">        LOGGER.info(&quot;HTTP GET request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L93">        LOGGER.info(&quot;HTTP GET request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L95">        model.addAttribute(&quot;bidList&quot;,bidListService.findBidById(id));</span>
+<span class="nc" id="L95">        model.addAttribute(&quot;bidList&quot;,bidListService.findBidById(id));</span>
 
-<span class="fc" id="L97">        return &quot;bidList/update&quot;;</span>
+<span class="nc" id="L97">        return &quot;bidList/update&quot;;</span>
     }
 
     /**
@@ -109,25 +109,25 @@ import javax.validation.Valid;
     @PostMapping(&quot;/bidList/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid BidList bidList,
                              BindingResult bindingResult) throws NotFoundException {
-<span class="fc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L112">        LOGGER.info(&quot;HTTP POST request received at /bidList/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc bfc" id="L114" title="All 2 branches covered.">       if(bindingResult.hasErrors()){</span>
-<span class="fc" id="L115">           LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L116">           return &quot;bidList/list&quot;;</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">       if(bindingResult.hasErrors()){</span>
+<span class="nc" id="L115">           LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="nc" id="L116">           return &quot;bidList/list&quot;;</span>
        }
 
-<span class="fc" id="L119">       BidList bidToUpdate = bidListService.findBidById(id);</span>
+<span class="nc" id="L119">       BidList bidToUpdate = bidListService.findBidById(id);</span>
 
-<span class="fc" id="L121">       bidToUpdate.setAccount(bidList.getAccount());</span>
-<span class="fc" id="L122">       bidToUpdate.setType(bidList.getType());</span>
-<span class="fc" id="L123">       bidToUpdate.setBidQuantity(bidList.getBidQuantity());</span>
-<span class="fc" id="L124">       bidToUpdate.setAskQuantity(bidList.getAskQuantity());</span>
-<span class="fc" id="L125">       bidToUpdate.setBid(bidList.getBid());</span>
-<span class="fc" id="L126">       bidToUpdate.setAsk(bidList.getAsk());</span>
-<span class="fc" id="L127">       bidListService.save(bidToUpdate);</span>
+<span class="nc" id="L121">       bidToUpdate.setAccount(bidList.getAccount());</span>
+<span class="nc" id="L122">       bidToUpdate.setType(bidList.getType());</span>
+<span class="nc" id="L123">       bidToUpdate.setBidQuantity(bidList.getBidQuantity());</span>
+<span class="nc" id="L124">       bidToUpdate.setAskQuantity(bidList.getAskQuantity());</span>
+<span class="nc" id="L125">       bidToUpdate.setBid(bidList.getBid());</span>
+<span class="nc" id="L126">       bidToUpdate.setAsk(bidList.getAsk());</span>
+<span class="nc" id="L127">       bidListService.save(bidToUpdate);</span>
 
 
-<span class="fc" id="L130">        return &quot;redirect:/bidList/list&quot;;</span>
+<span class="nc" id="L130">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 
     /**
@@ -139,11 +139,11 @@ import javax.validation.Valid;
      */
     @GetMapping(&quot;/bidList/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L142">        LOGGER.info(&quot;HTTP GET request received at /bidList/delete/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L142">        LOGGER.info(&quot;HTTP GET request received at /bidList/delete/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L144">        bidListService.deleteBidById(id);</span>
+<span class="nc" id="L144">        bidListService.deleteBidById(id);</span>
 
-<span class="fc" id="L146">        return &quot;redirect:/bidList/list&quot;;</span>
+<span class="nc" id="L146">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -50,9 +50,6 @@ public class UserService {
         if(userRepository.existsByUsername(user.getUsername())) {
             throw new AlreadyExistsException("Username already exists");
         }
-        if(userRepository.existsByFullName(user.getFullName())) {
-            throw new AlreadyExistsException("FullName already exists");
-        }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 

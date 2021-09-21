@@ -25,6 +25,14 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
     Optional<User> findUserByUsername(String username);
 
     /**
+     * Find user by full name optional.
+     *
+     * @param fullName the full name
+     * @return the optional
+     */
+    Optional<User> findUserByFullName(String fullName);
+
+    /**
      * Exists by username boolean.
      *
      * @param username the username

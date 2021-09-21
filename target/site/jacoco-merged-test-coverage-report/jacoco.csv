@@ -11,7 +11,7 @@ spring-boot-skeleton,com.nnk.springboot.services,RatingService,0,60,0,4,0,14,0,8
 spring-boot-skeleton,com.nnk.springboot.services,RuleNameService,0,60,0,4,0,14,0,8,0,6
 spring-boot-skeleton,com.nnk.springboot.services,MyUserDetailsService,5,19,0,0,0,4,1,2,1,2
 spring-boot-skeleton,com.nnk.springboot.services,CurvePointService,0,60,0,4,0,14,0,8,0,6
-spring-boot-skeleton,com.nnk.springboot.services,UserService,0,116,0,10,0,27,0,12,0,7
+spring-boot-skeleton,com.nnk.springboot.services,UserService,0,105,0,8,0,25,0,11,0,7
 spring-boot-skeleton,com.nnk.springboot.services,BidListService,0,62,0,4,0,15,0,8,0,6
 spring-boot-skeleton,com.nnk.springboot.exception,NotFoundException,0,4,0,0,0,2,0,1,0,1
 spring-boot-skeleton,com.nnk.springboot.exception,AlreadyExistsException,0,4,0,0,0,2,0,1,0,1

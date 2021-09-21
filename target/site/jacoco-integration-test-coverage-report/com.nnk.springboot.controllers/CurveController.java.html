@@ -25,9 +25,9 @@ import java.util.List;
  */
 @PreAuthorize(&quot;hasAnyRole('ADMIN','USER')&quot;)
 @Controller
-<span class="fc" id="L28">public class CurveController {</span>
+<span class="nc" id="L28">public class CurveController {</span>
 
-<span class="fc" id="L30">    private static Logger LOGGER = LoggerFactory.getLogger(CurveController.class);</span>
+<span class="nc" id="L30">    private static Logger LOGGER = LoggerFactory.getLogger(CurveController.class);</span>
 
     @Autowired
     private CurvePointService curvePointService;
@@ -41,13 +41,13 @@ import java.util.List;
      */
     @RequestMapping(&quot;/curvePoint/list&quot;)
     public String home(Model model) {
-<span class="fc" id="L44">        LOGGER.info(&quot;HTTP request received at /curvePoint/list&quot;);</span>
+<span class="nc" id="L44">        LOGGER.info(&quot;HTTP request received at /curvePoint/list&quot;);</span>
 
-<span class="fc" id="L46">        List&lt;CurvePoint&gt; curvePointList = curvePointService.findAll();</span>
+<span class="nc" id="L46">        List&lt;CurvePoint&gt; curvePointList = curvePointService.findAll();</span>
 
-<span class="fc" id="L48">        model.addAttribute(&quot;curvePointList&quot;, curvePointList);</span>
+<span class="nc" id="L48">        model.addAttribute(&quot;curvePointList&quot;, curvePointList);</span>
 
-<span class="fc" id="L50">        return &quot;curvePoint/list&quot;;</span>
+<span class="nc" id="L50">        return &quot;curvePoint/list&quot;;</span>
     }
 
     /**
@@ -58,11 +58,11 @@ import java.util.List;
      */
     @GetMapping(&quot;/curvePoint/add&quot;)
     public String addForm(Model model) {
-<span class="fc" id="L61">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/add&quot;);</span>
+<span class="nc" id="L61">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/add&quot;);</span>
 
-<span class="fc" id="L63">        model.addAttribute(&quot;curvePoint&quot;, new CurvePoint());</span>
+<span class="nc" id="L63">        model.addAttribute(&quot;curvePoint&quot;, new CurvePoint());</span>
 
-<span class="fc" id="L65">        return &quot;curvePoint/add&quot;;</span>
+<span class="nc" id="L65">        return &quot;curvePoint/add&quot;;</span>
     }
 
     /**
@@ -75,15 +75,15 @@ import java.util.List;
      */
     @PostMapping(&quot;/curvePoint/validate&quot;)
     public String validate(@Valid @ModelAttribute(&quot;curvePoint&quot;) CurvePoint curvePoint, BindingResult result) throws AlreadyExistsException {
-<span class="fc" id="L78">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/validate&quot;);</span>
+<span class="nc" id="L78">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/validate&quot;);</span>
 
-<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L81">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L82">            return &quot;curvePoint/add&quot;;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (result.hasErrors()) {</span>
+<span class="nc" id="L81">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="nc" id="L82">            return &quot;curvePoint/add&quot;;</span>
         }
-<span class="fc" id="L84">        curvePointService.save(curvePoint);</span>
+<span class="nc" id="L84">        curvePointService.save(curvePoint);</span>
 
-<span class="fc" id="L86">        return &quot;redirect:/curvePoint/list&quot;;</span>
+<span class="nc" id="L86">        return &quot;redirect:/curvePoint/list&quot;;</span>
     }
 
 
@@ -97,14 +97,14 @@ import java.util.List;
      */
     @GetMapping(&quot;/curvePoint/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) throws NotFoundException {
-<span class="fc" id="L100">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/update/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L100">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc" id="L102">        CurvePoint curvePoint = curvePointService.findById(id);</span>
+<span class="nc" id="L102">        CurvePoint curvePoint = curvePointService.findById(id);</span>
 
 
-<span class="fc" id="L105">        model.addAttribute(&quot;curvePoint&quot;, curvePoint);</span>
+<span class="nc" id="L105">        model.addAttribute(&quot;curvePoint&quot;, curvePoint);</span>
 
-<span class="fc" id="L107">        return &quot;curvePoint/update&quot;;</span>
+<span class="nc" id="L107">        return &quot;curvePoint/update&quot;;</span>
     }
 
 
@@ -121,15 +121,15 @@ import java.util.List;
     @PostMapping(&quot;/curvePoint/update/{id}&quot;)
     public String update(@PathVariable(&quot;id&quot;) Integer id, @Valid CurvePoint curvePoint,
                             BindingResult result, Model model) throws AlreadyExistsException {
-<span class="fc" id="L124">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/update/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L124">        LOGGER.info(&quot;HTTP POST request received at /curvePoint/update/{&quot;+id+&quot;}&quot;);</span>
 
-<span class="fc bfc" id="L126" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
-<span class="fc" id="L127">            LOGGER.info(&quot;Invalid field error&quot;);</span>
-<span class="fc" id="L128">            return &quot;curvePoint/update&quot;;</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (result.hasErrors()) {</span>
+<span class="nc" id="L127">            LOGGER.info(&quot;Invalid field error&quot;);</span>
+<span class="nc" id="L128">            return &quot;curvePoint/update&quot;;</span>
         }
-<span class="fc" id="L130">        curvePointService.save(curvePoint);</span>
+<span class="nc" id="L130">        curvePointService.save(curvePoint);</span>
 
-<span class="fc" id="L132">        return &quot;redirect:/curvePoint/list&quot;;</span>
+<span class="nc" id="L132">        return &quot;redirect:/curvePoint/list&quot;;</span>
     }
 
 
@@ -142,9 +142,9 @@ import java.util.List;
      */
     @GetMapping(&quot;/curvePoint/delete/{id}&quot;)
     public String delete(@PathVariable(&quot;id&quot;) Integer id) throws NotFoundException {
-<span class="fc" id="L145">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/delete/{&quot;+id+&quot;}&quot;);</span>
-<span class="fc" id="L146">        curvePointService.deleteById(id);</span>
-<span class="fc" id="L147">        return &quot;redirect:/curvePoint/list&quot;;</span>
+<span class="nc" id="L145">        LOGGER.info(&quot;HTTP GET request received at /curvePoint/delete/{&quot;+id+&quot;}&quot;);</span>
+<span class="nc" id="L146">        curvePointService.deleteById(id);</span>
+<span class="nc" id="L147">        return &quot;redirect:/curvePoint/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
