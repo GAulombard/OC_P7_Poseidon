@@ -26,7 +26,6 @@ public class UniqueValidator implements ConstraintValidator<Unique, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
 
-
         if(userRepository.existsByUsername(s)) {
             LOGGER.info("Invalid field: username already exists");
             return false;
