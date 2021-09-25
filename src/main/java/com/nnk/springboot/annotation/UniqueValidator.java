@@ -1,6 +1,7 @@
 package com.nnk.springboot.annotation;
 
 
+import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
 
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Optional;
 
 
 /**
@@ -25,12 +27,11 @@ public class UniqueValidator implements ConstraintValidator<Unique, String> {
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
 
 
-        if(!userRepository.existsByUsername(s)) {
-            LOGGER.info("username doesn't exists");
-            return true;
-        } else {
-            LOGGER.info("username already exists");
+        if(userRepository.existsByUsername(s)) {
+            LOGGER.info("Invalid field: username already exists");
             return false;
+        } else {
+            return true;
         }
 
     }

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.IT.BidListControllerITest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.965 s - in com.nnk.springboot.IT.BidListControllerITest

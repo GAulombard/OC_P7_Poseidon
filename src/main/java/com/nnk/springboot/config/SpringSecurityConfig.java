@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  */
 @Configuration
 @EnableWebSecurity // tell spring tu surpass security auto-configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true) //prePostEnabled should be true to use @PreAuthorized annotation
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override

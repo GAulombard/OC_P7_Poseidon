@@ -64,7 +64,7 @@ public class UserService {
      * @throws NotFoundException the not found exception
      */
     public void update(User user) throws NotFoundException {
-        LOGGER.info("Process to save new user");
+        LOGGER.info("Process to update existing user");
 
         if(!userRepository.existsByUsername(user.getUsername())) {
             throw new NotFoundException("User not found");

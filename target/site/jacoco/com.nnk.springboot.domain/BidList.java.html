@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BidList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.domain</a> &gt; <span class="el_source">BidList.java</span></div><h1>BidList.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.beans.factory.annotation.Required;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+/**
+ * The type Bid list.
+ */
+@Entity
+@Getter
+<span class="nc" id="L19">@Setter</span>
+<span class="nc" id="L20">@ToString</span>
+@Table(name = &quot;bid_list&quot;)
+public class BidList {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;bid_list_id&quot;)
+<span class="nc" id="L27">    private Integer bidListId;</span>
+
+    @Column(name = &quot;account&quot;)
+    @NotEmpty(message = &quot;Account is mandatory&quot;)
+<span class="nc" id="L31">    private String account;</span>
+
+    @Column(name = &quot;type&quot;)
+    @NotEmpty(message = &quot;Type is mandatory&quot;)
+<span class="nc" id="L35">    private String type;</span>
+
+    @Column(name = &quot;bid_quantity&quot;)
+    @Min(value = 0, message = &quot;bidQuantity must be positive&quot;)
+    @Digits(integer = 8, fraction = 2, message = &quot;bidQuantitys should be a number&quot;)
+    @NotNull(message = &quot;Bid quantity is mandatory&quot;)
+<span class="nc" id="L41">    private double bidQuantity;</span>
+
+    @Column(name = &quot;ask_quantity&quot;)
+    @Min(value = 0, message = &quot;askQuantity must be positive&quot;)
+    @Digits(integer = 8, fraction = 2, message = &quot;askQuantity should be a number&quot;)
+    @NotNull(message = &quot;Ask quantity is mandatory&quot;)
+<span class="nc" id="L47">    private double askQuantity;</span>
+
+    @Column(name = &quot;bid&quot;)
+    @Min(value = 0, message = &quot;bid must be positive&quot;)
+    @Digits(integer = 8, fraction = 2, message = &quot;bid should be a number&quot;)
+    @NotNull(message = &quot;Bid is mandatory&quot;)
+<span class="nc" id="L53">    private double bid;</span>
+
+    @Column(name = &quot;ask&quot;)
+    @Min(value = 0, message = &quot;ask must be positive&quot;)
+    @Digits(integer = 8, fraction = 2, message = &quot;ask should be a number&quot;)
+    @NotNull(message = &quot;Ask is mandatory&quot;)
+<span class="nc" id="L59">    private double ask;</span>
+
+    @Column(name = &quot;benchmark&quot;)
+<span class="nc" id="L62">    private String benchmark;</span>
+
+    @Column(name = &quot;bid_list_date&quot;)
+<span class="nc" id="L65">    private LocalDateTime bidListDate;</span>
+
+    @Column(name = &quot;commentary&quot;)
+<span class="nc" id="L68">    private String commentary;</span>
+
+    @Column(name = &quot;security&quot;)
+<span class="nc" id="L71">    private String security;</span>
+
+    @Column(name = &quot;status&quot;)
+<span class="nc" id="L74">    private String status;</span>
+
+    @Column(name = &quot;trader&quot;)
+<span class="nc" id="L77">    private String trader;</span>
+
+    @Column(name = &quot;book&quot;)
+<span class="nc" id="L80">    private String book;</span>
+
+    @Column(name = &quot;creation_name&quot;)
+<span class="nc" id="L83">    private String creationName;</span>
+
+    @Column(name = &quot;creation_date&quot;)
+<span class="nc" id="L86">    private LocalDateTime creationDate;</span>
+
+    @Column(name = &quot;revision_name&quot;)
+<span class="nc" id="L89">    private String revisionName;</span>
+
+    @Column(name = &quot;revision_date&quot;)
+<span class="nc" id="L92">    private LocalDateTime revisionDate;</span>
+
+    @Column(name = &quot;deal_name&quot;)
+<span class="nc" id="L95">    private String dealName;</span>
+
+    @Column(name = &quot;deal_type&quot;)
+<span class="nc" id="L98">    private String dealType;</span>
+
+    @Column(name = &quot;source_list_id&quot;)
+<span class="nc" id="L101">    private String sourceListId;</span>
+
+    @Column(name = &quot;side&quot;)
+<span class="nc" id="L104">    private String side;</span>
+
+    /**
+     * Instantiates a new Bid list.
+     */
+<span class="nc" id="L109">    public BidList() {</span>
+
+<span class="nc" id="L111">    }</span>
+
+    /**
+     * Instantiates a new Bid list.
+     *
+     * @param account     the account
+     * @param type        the type
+     * @param bidQuantity the bid quantity
+     */
+<span class="nc" id="L120">    public BidList(String account, String type, double bidQuantity) {</span>
+
+<span class="nc" id="L122">        this.account = account;</span>
+<span class="nc" id="L123">        this.type = type;</span>
+<span class="nc" id="L124">        this.bidQuantity = bidQuantity;</span>
+
+<span class="nc" id="L126">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
