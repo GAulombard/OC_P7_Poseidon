@@ -1,4 +1,4 @@
-/logs/*
-/.idea/*
-/.jpb/*
-/target/*
+logs/*
+.idea/*
+.jpb/*
+target/*
