@@ -7,10 +7,10 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-/.idea/
+.idea/
 
-/.jpb/
+.jpb/
 
-/logs/
+logs/
 
-/target/
+target/
