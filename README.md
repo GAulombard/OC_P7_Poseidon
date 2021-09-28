@@ -1,31 +1,49 @@
-# spring-boot
-## Technical:
+# POSEIDON
+![poseidon logo](resources/15716625873741_image1.png)
+- Author: Geoffrey Aulombard - Java web-application developer student at OpenClassRooms
+- 
+## Description:
 
-1. Framework: Spring Boot v2.0.4
-2. Java 8
-3. Thymeleaf
-4. Bootstrap v.4.3.1
+- A web application for traders.
 
+## Getting started
 
-## Setup with Intellij IDE
-1. Create project from Initializr: File > New > project > Spring Initializr
-2. Add lib repository into pom.xml
-3. Add folders
-    - Source root: src/main/java
-    - View: src/main/resources
-    - Static: src/main/resource/static
-4. Create database with name "demo" as configuration in application.properties
-5. Run sql script to create table doc/data.sql
+- this app runs on port 80, then address is "localhost"
+- the mySQL datase runs on port 3306
 
-## Implement a Feature
-1. Create mapping domain class and place in package com.nnk.springboot.domain
-2. Create repository class and place in package com.nnk.springboot.repositories
-3. Create controller class and place in package com.nnk.springboot.controllers
-4. Create view files and place in src/main/resource/templates
+### Install DataBase
+- first, run the script data.sql located in src/main/resources/script
+- second, run the script data-test.sql located in src/main/resources/script
+- more information in the application.properties file located in src/main/resources
 
-## Write Unit Test
-1. Create unit test and place in package com.nnk.springboot in folder test > java
+## How it works
+### Technologies
 
-## Security
-1. Create user service to load user from  database and place in package com.nnk.springboot.services
-2. Add configuration class and place in package com.nnk.springboot.config
+This is a Spring Boot Application, working with (check the pom.xml file to see all dependencies and versions)
+
+- Java 11
+- Spring Web
+- Spring Security
+- Spring DATA JPA
+- MySQL
+- Thymeleaf
+- Bootstrap
+
+### Architecture
+
+- this application use the MVC pattern.
+
+![pattern](resources/Oc_P7_Poseidon.png)
+
+### Run the app
+
+use the following command to run the app:
+- mvn clean package
+- mvn spring-boot: run
+
+use ctrl+c in terminal to stop the program
+
+### Run the tests
+
+use the following command to run the app:
+- mvn clean verify
