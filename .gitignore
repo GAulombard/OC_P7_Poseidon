@@ -1,7 +1,5 @@
 ### IntelliJ IDEA ###
-**/.idea/*
-
-**/logs/*
-
-**/.jpb/*
-**/target/*
+/target/
+/logs/
+/.jpb/
+/.idea/
