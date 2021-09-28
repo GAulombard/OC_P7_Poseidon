@@ -1,7 +1,6 @@
 # POSEIDON
 ![poseidon logo](resources/15716625873741_image1.png)
 - Author: Geoffrey Aulombard - Java web-application developer student at OpenClassRooms
-- 
 ## Description:
 
 - A web application for traders.
@@ -9,7 +8,7 @@
 ## Getting started
 
 - this app runs on port 80, then address is "localhost"
-- the mySQL datase runs on port 3306
+- the mySQL database runs on port 3306
 
 ### Install DataBase
 - first, run the script data.sql located in src/main/resources/script
