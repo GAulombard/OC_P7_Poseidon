@@ -32,7 +32,7 @@ public class User implements UserDetails {
 
     @Column(name = &quot;username&quot;)
     @NotBlank(message = &quot;Username is mandatory&quot;)
-    @Unique
+    //@Unique
 <span class="nc" id="L36">    private String username;</span>
 
     @Column(name = &quot;password&quot;)

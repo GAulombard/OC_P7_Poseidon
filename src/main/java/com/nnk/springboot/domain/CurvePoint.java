@@ -6,10 +6,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -31,6 +28,7 @@ public class CurvePoint {
 
     @NotNull(message = "curve id is mandatory")
     @Min(value = 0,message = "curve id must be a positive number")
+    @Digits(fraction = 0, integer = 10, message ="curve id must be an integer")
     @Column(name = "curve_id")
     private Integer curveId;
 

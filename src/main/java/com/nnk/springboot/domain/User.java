@@ -32,7 +32,7 @@ public class User implements UserDetails {
 
     @Column(name = "username")
     @NotBlank(message = "Username is mandatory")
-    @Unique
+    //@Unique
     private String username;
 
     @Column(name = "password")

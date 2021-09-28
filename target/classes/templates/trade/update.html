@@ -50,7 +50,7 @@
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="buyQuantity">buyQuantity</label>
-					<input th:field="*{buyQuantity}" type="text" class="form-control" id="buyQuantity" name="buyQuantity" placeholder="buyQuantity">
+					<input th:field="*{buyQuantity}" type="number" lang="en" step="0.01" class="form-control" id="buyQuantity" name="buyQuantity" placeholder="buyQuantity">
 					<span class="text-danger" th:errors="*{buyQuantity}"></span>
 				</div>
 

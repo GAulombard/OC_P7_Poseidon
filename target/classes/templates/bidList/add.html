@@ -50,22 +50,22 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="bidQuantity">Bid quantity</label>
-						<input th:field="*{bidQuantity}" type="text" class="form-control" id="bidQuantity" name="bidQuantity" placeholder="bid quantity">
+						<input th:field="*{bidQuantity}" type="number" lang="en" class="form-control" id="bidQuantity" name="bidQuantity" placeholder="bid quantity">
 						<span class="text-danger" th:errors="*{bidQuantity}"></span>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="askQuantity">Ask quantity</label>
-						<input th:field="*{askQuantity}" type="text" class="form-control" id="askQuantity" name="askQuantity" placeholder="ask quantity">
+						<input th:field="*{askQuantity}" type="number" lang="en" class="form-control" id="askQuantity" name="askQuantity" placeholder="ask quantity">
 						<span class="text-danger" th:errors="*{askQuantity}"></span>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="bid">Bid</label>
-						<input th:field="*{bid}" type="text" class="form-control" id="bid" name="bid" placeholder="Bid">
+						<input th:field="*{bid}" type="number" lang="en" class="form-control" id="bid" name="bid" placeholder="Bid">
 						<span class="text-danger" th:errors="*{bid}"></span>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="ask">Ask</label>
-						<input th:field="*{ask}" type="text" class="form-control" id="ask" name="ask" placeholder="Ask">
+						<input th:field="*{ask}" type="number" lang="en" class="form-control" id="ask" name="ask" placeholder="Ask">
 						<span class="text-danger" th:errors="*{ask}"></span>
 					</div>
 				</div>

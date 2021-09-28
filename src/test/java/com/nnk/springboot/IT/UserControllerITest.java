@@ -1,6 +1,7 @@
 package com.nnk.springboot.IT;
 
 import com.nnk.springboot.domain.User;
+import org.junit.Ignore;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -80,7 +81,7 @@ public class UserControllerITest extends AllTestITest {
         @Test
         @Rollback
         void validate_withAdmin() throws Exception {
-            User user = new User("test","test","ROLE_USER");
+            User user = new User("test1","test","ROLE_USER");
             user.setPassword("Azerty1#");
 
             mockMvc.perform(post("/user/validate").with(httpBasic("admin","admin")).flashAttr("user",user))
@@ -139,6 +140,8 @@ public class UserControllerITest extends AllTestITest {
             mockMvc.perform(post("/user/update/1").with(anonymous()))
                     .andExpect(status().isUnauthorized());
         }
+
+        //FIXME: custom annotation for unique username is problematic, find another way
 
 /*        @Test
         @Rollback
